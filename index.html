@@ -1,0 +1,1151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="AI-generated website">
+      <meta name="theme-color" content="#ffffff">
+      
+      <!-- Performance optimization: Load critical CSS first -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="style">
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+      
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: '#3B82F6',
+                secondary: '#10B981',
+                accent: '#8B5CF6',
+              },
+              fontFamily: {
+                sans: ['Inter', 'system-ui', 'sans-serif'],
+                heading: ['Inter', 'system-ui', 'sans-serif'],
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'slide-up': 'slideUp 0.5s ease-out',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['group-hover'],
+              transform: ['group-hover'],
+              scale: ['group-hover'],
+            },
+          },
+        }
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script defer src="https://preline.co/assets/vendor/preline/dist/index.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+      <!-- Icons - Load async -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+
+      <!-- Minimal Animation CSS -->
+      <style>
+        /* Core Animations */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+          from { transform: translateY(20px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Section Padding */
+        section {
+          padding: clamp(2rem, 5vw, 6.25rem) 0;
+          scroll-margin-top: 5rem;
+        }
+
+        /* Performance Optimizations */
+        img {
+          content-visibility: auto;
+          contain: content;
+        }
+
+        /* Core Layout Classes */
+        .container {
+          width: min(100% - 2rem, 75rem);
+          margin-inline: auto;
+        }
+
+        /* Responsive Typography */
+        :root {
+          --fluid-min-width: 320;
+          --fluid-max-width: 1140;
+          --fluid-min-size: 16;
+          --fluid-max-size: 18;
+          --fluid-min-scale: 1.2;
+          --fluid-max-scale: 1.333;
+        }
+
+        /* Add smooth scrolling only if user hasn't requested reduced motion */
+        @media (prefers-reduced-motion: no-preference) {
+          html {
+            scroll-behavior: smooth;
+          }
+        }
+      </style>
+
+      <!-- Enhanced Image Handler -->
+      <script>
+        // Lazy loading and error handling for images
+        document.addEventListener('DOMContentLoaded', () => {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                  img.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              }
+            });
+          }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+          });
+
+          const loadImage = (img) => {
+            if ('loading' in HTMLImageElement.prototype) {
+              img.loading = 'lazy';
+            }
+            
+            // Enhanced error handling
+            img.onerror = () => {
+              const width = img.getAttribute('width') || img.clientWidth || 300;
+              const height = img.getAttribute('height') || img.clientHeight || 200;
+              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
+              img.alt = 'Image unavailable';
+              img.classList.add('error-image');
+            };
+
+            if (img.dataset.src) {
+              imageObserver.observe(img);
+            }
+          };
+
+          // Process existing images
+          document.querySelectorAll('img[data-src]').forEach(loadImage);
+
+          // Watch for new images
+          new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1 && node.tagName === 'IMG') {
+                  loadImage(node);
+                }
+                if (node.nodeType === 1) {
+                  node.querySelectorAll('img[data-src]').forEach(loadImage);
+                }
+              });
+            });
+          }).observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });
+
+        // Performance monitoring
+        if ('performance' in window) {
+          window.addEventListener('load', () => {
+            const timing = performance.getEntriesByType('navigation')[0];
+            console.log(`Page load time: ${timing.loadEventEnd - timing.navigationStart}ms`);
+          });
+        }
+      </script>
+   </head>
+   <body class="antialiased leading-normal  ">
+      <div id="page-wrapper" class="">
+         <main class="">
+           <!-- Content will be injected here -->
+         </main>
+      </div>
+   </body>
+</html><element id="f2bdef6a-f76a-419b-a41d-70d961f00c15" data-section-id="f2bdef6a-f76a-419b-a41d-70d961f00c15">
+
+<htmlCode>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#4338ca',
+        secondary: '#818cf8',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      animation: {
+        'float': 'float 3s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        }
+      },
+    },
+  },
+  variants: {
+    extend: {
+      backdropFilter: ['hover', 'focus'],
+    },
+  },
+}
+</script>
+
+<div id="root" class="min-h-screen bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/70 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <h1 class="text-2xl font-bold text-primary">GJH INC</h1>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-8">
+            <a href="#contact" class="text-gray-700 hover:text-primary transition">Home</a>
+            
+            <a href="#services" class="text-gray-700 hover:text-primary transition">Services</a>
+            <a href="#about" class="text-gray-700 hover:text-primary transition">Web development</a>
+            <a href="#clients" class="text-gray-700 hover:text-primary transition">markets</a>
+            
+            <a href="#get-started" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition">
+              Get Started
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="relative pt-28 pb-20 sm:pt-36 lg:pt-44 lg:pb-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+              Transforming Business Through Technology
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              Strategic Consulting for Digital Success
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl">
+              Providing strategic consulting, technology services, and managed services to commercial, not-for-profit, and government organizations.
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition">
+              Request a Proposal
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a href="#services" class="inline-flex items-center px-8 py-3 rounded-full border border-gray-300 hover:border-primary hover:text-primary transition">
+              Explore Services
+            </a>
+          </div>
+
+          <div class="flex items-center gap-8">
+            <div class="flex -space-x-2">
+              <div class="w-12 h-12 rounded-full border-2 border-white bg-primary flex items-center justify-center text-white font-bold">20+</div>
+            </div>
+            <p class="text-sm text-gray-600">
+              Years of Excellence in Data & Technology Services
+            </p>
+          </div>
+        </div>
+
+        <div class="relative lg:block animate-float">
+          <div class="absolute inset-0 bg-gradient-radial from-primary/20 to-transparent blur-3xl"></div>
+          <div class="relative backdrop-blur-sm bg-white/30 rounded-2xl p-8 border border-white/20">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white/80 p-6 rounded-xl shadow-lg">
+                <div class="text-primary mb-2">🏛️</div>
+                <h3 class="font-semibold">Gov Contracts</h3>
+                <p class="text-sm text-gray-600">Expert guidance for RFPs</p>
+              </div>
+              <div class="bg-white/80 p-6 rounded-xl shadow-lg">
+                <div class="text-primary mb-2">🌐</div>
+                <h3 class="font-semibold">AI Development</h3>
+                <p class="text-sm text-gray-600">Smart web solutions</p>
+              </div>
+              <div class="bg-white/80 p-6 rounded-xl shadow-lg">
+                <div class="text-primary mb-2">📊</div>
+                <h3 class="font-semibold">Data Services</h3>
+                <p class="text-sm text-gray-600">Actionable insights</p>
+              </div>
+              <div class="bg-white/80 p-6 rounded-xl shadow-lg">
+                <div class="text-primary mb-2">🤖</div>
+                <h3 class="font-semibold">GenAI</h3>
+                <p class="text-sm text-gray-600">Future-ready solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="3910ee92-175b-439d-8689-3c0f508e1d9b" data-section-id="3910ee92-175b-439d-8689-3c0f508e1d9b">
+
+<htmlCode>
+<div id="services" class="relative py-20 bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+    <div class="absolute top-0 -right-4 w-72 h-72 bg-violet-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+      <p class="text-lg text-gray-600">Comprehensive solutions tailored to your organization's needs</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Government Contract Consulting -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="text-3xl mb-4">🏛️</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Government Contract Consulting</h3>
+          <p class="text-gray-600 mb-6">Navigate the complex world of government contracts with our expert guidance. We'll help you bid, win, and execute RFPs with confidence.</p>
+          <a href="#" class="inline-flex items-center text-primary hover:gap-2 transition-all duration-300">
+            Learn More 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- AI-Optimized Web Development -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="text-3xl mb-4">🌐</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">AI-Optimized Web Development</h3>
+          <p class="text-gray-600 mb-6">Building websites that speak fluently to both humans and AI, ensuring your online presence excels in both traditional and AI-driven search results.</p>
+          <a href="#" class="inline-flex items-center text-primary hover:gap-2 transition-all duration-300">
+            Learn More 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Data Services -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="text-3xl mb-4">📊</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Data Services</h3>
+          <p class="text-gray-600 mb-6">With 20 years of data expertise, we transform raw information into actionable insights, driving your business forward in the data-driven age.</p>
+          <a href="#" class="inline-flex items-center text-primary hover:gap-2 transition-all duration-300">
+            Learn More 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Automation Services -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Automation & Integration</h3>
+          <p class="text-gray-600 mb-6">Streamline your business operations, increase efficiency, and reduce manual effort through intelligent automation solutions.</p>
+          <a href="#" class="inline-flex items-center text-primary hover:gap-2 transition-all duration-300">
+            Learn More 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- GenAI Solutions -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="text-3xl mb-4">🤖</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">GenAI Solutions</h3>
+          <p class="text-gray-600 mb-6">Harness the power of artificial intelligence to streamline operations, enhance customer experiences, and stay ahead of the curve.</p>
+          <a href="#" class="inline-flex items-center text-primary hover:gap-2 transition-all duration-300">
+            Learn More 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="group relative backdrop-blur-sm bg-gradient-to-br from-primary/10 to-violet-500/10 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="relative flex flex-col justify-center items-center text-center h-full">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
+          <p class="text-gray-600 mb-6">Let's discuss how we can help transform your business</p>
+          <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+            Contact Us
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="d148fcc4-f2ae-45f0-b715-ba1a74e684e1" data-section-id="d148fcc4-f2ae-45f0-b715-ba1a74e684e1">
+
+<htmlCode>
+<div id="why-choose-us" class="relative py-24 bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-[300px] h-[300px] bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+        Why Choose GJH Consulting?
+      </span>
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">Expertise That Drives Results</h2>
+      <p class="text-lg text-gray-600">Partner with a team that brings decades of experience and cutting-edge solutions to every project.</p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <!-- Feature 1 -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Proven Track Record</h3>
+          <p class="text-gray-600 mb-4">20 years of data expertise delivering successful outcomes for organizations of all sizes.</p>
+          <div class="flex items-center text-primary">
+            <span class="text-3xl font-bold">20+</span>
+            <span class="ml-2">Years<br/>Experience</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Cutting-Edge Technology</h3>
+          <p class="text-gray-600 mb-4">AI-optimized solutions that keep your business ahead of the digital curve.</p>
+          <div class="flex items-center text-primary">
+            <span class="text-3xl font-bold">100%</span>
+            <span class="ml-2">AI-Powered<br/>Solutions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Government Contract Specialists</h3>
+          <p class="text-gray-600 mb-4">Bridging small businesses with big opportunities in government contracting.</p>
+          <div class="flex items-center text-primary">
+            <span class="text-3xl font-bold">500+</span>
+            <span class="ml-2">Successful<br/>Contracts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="relative backdrop-blur-sm bg-white/60 rounded-2xl p-12 border border-white/20">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl"></div>
+      <div class="relative flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="lg:w-2/3">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Experience the Difference?</h3>
+          <p class="text-gray-600">Explore our success stories and discover how we've helped organizations like yours achieve their goals.</p>
+        </div>
+        <a href="#case-studies" class="inline-flex items-center px-8 py-4 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+          Explore Success Stories
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="da908052-3711-4125-a39d-f8984377994e" data-section-id="da908052-3711-4125-a39d-f8984377994e">
+
+<htmlCode>
+<div id="client-showcase" class="relative py-24 bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+  <!-- Decorative Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+        Our Global Impact
+      </span>
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">Trusted by Industry Leaders</h2>
+      <p class="text-lg text-gray-600">We've helped transform businesses across various sectors, from tech giants to innovative startups.</p>
+    </div>
+
+    <!-- Clients Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+      <!-- Each client logo is wrapped in a glassmorphic card -->
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">Apple</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">Microsoft</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">Google</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">Amazon</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">Meta</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">Tesla</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-xl font-bold text-gray-800">Berkshire Hathaway</span>
+      </div>
+      <div class="group relative backdrop-blur-sm bg-white/40 rounded-2xl p-6 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+        <span class="text-2xl font-bold text-gray-800">eBay</span>
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="relative backdrop-blur-sm bg-white/60 rounded-2xl p-12 border border-white/20 mb-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl"></div>
+      <div class="relative">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">State Certifications</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="text-xl font-bold text-primary mb-2">SBCM #2001776</div>
+            <p class="text-gray-600">Small Business Certification</p>
+          </div>
+          <div class="text-center">
+            <div class="text-xl font-bold text-primary mb-2">CMAS</div>
+            <p class="text-gray-600">California Multiple Award Schedules</p>
+          </div>
+          <div class="text-center">
+            <div class="text-xl font-bold text-primary mb-2">STATE DBE</div>
+            <p class="text-gray-600">Disadvantaged Business Enterprise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partners Section -->
+    <div class="text-center">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8">Our Trusted Partners</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="group relative backdrop-blur-sm bg-white/40 rounded-xl p-4 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+          <span class="font-semibold text-gray-800">WP Engine</span>
+        </div>
+        <div class="group relative backdrop-blur-sm bg-white/40 rounded-xl p-4 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+          <span class="font-semibold text-gray-800">MailChimp</span>
+        </div>
+        <div class="group relative backdrop-blur-sm bg-white/40 rounded-xl p-4 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+          <span class="font-semibold text-gray-800">DATA BRICS</span>
+        </div>
+        <div class="group relative backdrop-blur-sm bg-white/40 rounded-xl p-4 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+          <span class="font-semibold text-gray-800">Tawk.to</span>
+        </div>
+        <div class="group relative backdrop-blur-sm bg-white/40 rounded-xl p-4 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+          <span class="font-semibold text-gray-800">Make.com</span>
+        </div>
+        <div class="group relative backdrop-blur-sm bg-white/40 rounded-xl p-4 border border-white/20 hover:border-primary/20 transition-all duration-300 flex items-center justify-center">
+          <span class="font-semibold text-gray-800">Snowflake</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="d1c25869-5152-42c9-bc5e-c941ad04e18d" data-section-id="d1c25869-5152-42c9-bc5e-c941ad04e18d">
+
+<htmlCode>
+<div id="certifications" class="relative py-24 bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute right-0 top-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+    <div class="absolute left-0 bottom-0 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+        Certifications & Compliance
+      </span>
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">Excellence Verified</h2>
+      <p class="text-lg text-gray-600">Our certifications underscore our commitment to excellence and ability to serve diverse client needs.</p>
+    </div>
+
+    <!-- Certifications Cards -->
+    <div class="grid md:grid-cols-3 gap-8 mb-20">
+      <!-- SBCM Certification -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SBCM</h3>
+          <p class="text-2xl font-bold text-primary mb-4">#2001776</p>
+          <p class="text-gray-600">Small Business Contract Management Certification, validating our expertise in government contracting.</p>
+        </div>
+      </div>
+
+      <!-- CMAS Certification -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">CMAS</h3>
+          <p class="text-2xl font-bold text-primary mb-4">Certified</p>
+          <p class="text-gray-600">California Multiple Award Schedules certification for state government procurement opportunities.</p>
+        </div>
+      </div>
+
+      <!-- STATE DBE Certification -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">STATE DBE</h3>
+          <p class="text-2xl font-bold text-primary mb-4">Verified</p>
+          <p class="text-gray-600">Disadvantaged Business Enterprise certification, demonstrating our commitment to diversity and inclusion.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="relative backdrop-blur-sm bg-white/60 rounded-2xl p-12 border border-white/20">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl"></div>
+      <div class="relative">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary mb-2">100%</div>
+            <p class="text-gray-900 font-semibold">Compliance Rate</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary mb-2">500+</div>
+            <p class="text-gray-900 font-semibold">Projects Completed</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-primary mb-2">20+</div>
+            <p class="text-gray-900 font-semibold">Years of Excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-20 text-center">
+      <a href="#contact" class="inline-flex items-center px-8 py-4 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+        Request Verification Details
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="f0ed5ed3-7b10-454e-87ba-eeeefb8c0189" data-section-id="f0ed5ed3-7b10-454e-87ba-eeeefb8c0189">
+
+<htmlCode>
+<div id="partners" class="relative py-24 bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/3 left-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+        Strategic Partnerships
+      </span>
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Trusted Partners</h2>
+      <p class="text-lg text-gray-600">Collaborating with industry leaders to deliver exceptional solutions</p>
+    </div>
+
+    <!-- Partners Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-20">
+      <!-- Technology Partners -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Technology Partners</h3>
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
+                <span class="text-xl font-bold text-primary">WP</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">WP Engine</h4>
+                <p class="text-sm text-gray-600">Premium WordPress Hosting</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
+                <span class="text-xl font-bold text-primary">SF</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Snowflake</h4>
+                <p class="text-sm text-gray-600">Data Cloud Platform</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marketing Partners -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Marketing Partners</h3>
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
+                <span class="text-xl font-bold text-primary">MC</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">MailChimp</h4>
+                <p class="text-sm text-gray-600">Email Marketing Platform</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
+                <span class="text-xl font-bold text-primary">TT</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Tawk.to</h4>
+                <p class="text-sm text-gray-600">Customer Engagement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Partners -->
+      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Data Partners</h3>
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
+                <span class="text-xl font-bold text-primary">DB</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">DATA BRICS</h4>
+                <p class="text-sm text-gray-600">Data Analytics Solutions</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
+                <span class="text-xl font-bold text-primary">MK</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Make.com</h4>
+                <p class="text-sm text-gray-600">Workflow Automation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partner Benefits -->
+    <div class="relative backdrop-blur-sm bg-white/60 rounded-2xl p-12 border border-white/20">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl"></div>
+      <div class="relative">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Innovation</h4>
+            <p class="text-sm text-gray-600">Access to cutting-edge technologies</p>
+          </div>
+          <div class="text-center">
+            <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Scalability</h4>
+            <p class="text-sm text-gray-600">Enterprise-grade infrastructure</p>
+          </div>
+          <div class="text-center">
+            <div class="size-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Security</h4>
+            <p class="text-sm text-gray-600">Enterprise-level protection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="007e7671-f394-4fad-8edd-fd36161ab162" data-section-id="007e7671-f394-4fad-8edd-fd36161ab162">
+
+<htmlCode>
+<div id="root" class="relative overflow-hidden bg-gradient-to-br from-blue-100/90 via-violet-100/90 to-white">
+  <!-- Glassmorphic container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
+    <!-- Decorative blur effects -->
+    <div class="absolute inset-0">
+      <div class="absolute top-0 -left-40 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+      <div class="absolute bottom-0 -right-40 w-96 h-96 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Trusted by leading organizations worldwide, hear directly from our clients about their experience working with GJH INC.</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-white/40 backdrop-blur-lg rounded-2xl p-8 shadow-lg hover:shadow-xl transition duration-300 border border-white/20">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-quit.png" alt="Client Logo" class="h-12 w-auto"/>
+          </div>
+          <blockquote class="text-gray-800 mb-6">"GJH INC's AI-optimized web development services transformed our online presence. The results exceeded our expectations."</blockquote>
+          <div class="flex items-center gap-4">
+            <div>
+              <p class="font-semibold text-gray-900">Sarah Anderson</p>
+              <p class="text-gray-600">Digital Director, Apple</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white/40 backdrop-blur-lg rounded-2xl p-8 shadow-lg hover:shadow-xl transition duration-300 border border-white/20">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-berkowitz.png" alt="Client Logo" class="h-12 w-auto"/>
+          </div>
+          <blockquote class="text-gray-800 mb-6">"Their expertise in government contracts helped us secure major opportunities. A game-changer for our business."</blockquote>
+          <div class="flex items-center gap-4">
+            <div>
+              <p class="font-semibold text-gray-900">Michael Chen</p>
+              <p class="text-gray-600">CEO, Microsoft Division</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white/40 backdrop-blur-lg rounded-2xl p-8 shadow-lg hover:shadow-xl transition duration-300 border border-white/20">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-dominos.png" alt="Client Logo" class="h-12 w-auto"/>
+          </div>
+          <blockquote class="text-gray-800 mb-6">"The data insights provided by GJH INC have been instrumental in our strategic decision-making process."</blockquote>
+          <div class="flex items-center gap-4">
+            <div>
+              <p class="font-semibold text-gray-900">Emily Rodriguez</p>
+              <p class="text-gray-600">CTO, Meta</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client Logos -->
+      <div class="mt-20">
+        <p class="text-center text-gray-600 mb-8">Trusted by world-class organizations</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+          <img src="https://www.tawk.to/wp-content/uploads/2020/04/cliente-adidas.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
+          <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-chevrolet.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
+          <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-euronics.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
+          <img src="https://www.tawk.to/wp-content/uploads/2020/04/clients-europcar.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="3ce52c0d-f154-4087-8de5-6eae83cd4452" data-section-id="3ce52c0d-f154-4087-8de5-6eae83cd4452">
+
+<htmlCode>
+<div id="root" class="relative overflow-hidden bg-gradient-to-br from-blue-100/90 via-violet-100/90 to-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-0 -right-40 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+      <div class="absolute bottom-0 -left-40 w-96 h-96 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+    </div>
+
+    <!-- Contact CTA Container -->
+    <div class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 shadow-xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Content -->
+        <div>
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">Ready to Optimize Your Business?</h2>
+          <p class="text-lg text-gray-600 mb-8">Let's transform your digital presence and unlock new opportunities together. Our team of experts is ready to help you achieve your goals.</p>
+          
+          <!-- Certifications Display -->
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="bg-white/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/40">
+              <span class="text-sm font-semibold text-gray-700">SBCM #2001776</span>
+            </div>
+            <div class="bg-white/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/40">
+              <span class="text-sm font-semibold text-gray-700">CMAS</span>
+            </div>
+            <div class="bg-white/60 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/40">
+              <span class="text-sm font-semibold text-gray-700">STATE DBE</span>
+            </div>
+          </div>
+
+          <!-- Contact Options -->
+          <div class="grid sm:grid-cols-3 gap-4">
+            <a href="tel:#" class="flex items-center justify-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/40 transition duration-300">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span class="font-medium text-gray-900">Call Now</span>
+            </a>
+            
+            <a href="mailto:#" class="flex items-center justify-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/40 transition duration-300">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span class="font-medium text-gray-900">Email Us</span>
+            </a>
+            
+            <a href="#" class="flex items-center justify-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/40 transition duration-300">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+              </svg>
+              <span class="font-medium text-gray-900">Live Chat</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Content - Contact Form -->
+        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40">
+          <form class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+              <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/60 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200" placeholder="Your name">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input type="email" class="w-full px-4 py-3 rounded-lg bg-white/60 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200" placeholder="you@company.com">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <textarea class="w-full px-4 py-3 rounded-lg bg-white/60 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200" rows="4" placeholder="Tell us about your project"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+              Request a Proposal
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="10adbfeb-094a-4e1a-9ea2-ce72947f503f" data-section-id="10adbfeb-094a-4e1a-9ea2-ce72947f503f">
+
+<htmlCode>
+<div id="root" class="bg-gradient-to-br from-blue-100/90 via-violet-100/90 to-white">
+  <footer class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Main Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Company Info -->
+        <div>
+          <div class="mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo" class="h-8 w-auto"/>
+          </div>
+          <p class="text-gray-600 mb-6">
+            Strategic consulting technology and managed services for commercial, not-for-profit, and government organizations.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-600 hover:text-blue-600">
+              <span class="sr-only">LinkedIn</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-blue-600">
+              <span class="sr-only">Twitter</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-gray-900 font-semibold mb-4">Services</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Government Contract Consulting</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">AI-Optimized Web Development</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Data Services</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Automation Services</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">GenAI Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="text-gray-900 font-semibold mb-4">Company</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">About Us</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Case Studies</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Certifications</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Partners</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-gray-900 font-semibold mb-4">Contact</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center space-x-3">
+              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span class="text-gray-600">Call Now</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span class="text-gray-600">Email Us</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span class="text-gray-600">Location</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="border-t border-gray-200 pt-8 mb-8">
+        <div class="flex flex-wrap gap-6 justify-center">
+          <div class="bg-white/60 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-sm font-semibold text-gray-700">SBCM #2001776</span>
+          </div>
+          <div class="bg-white/60 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-sm font-semibold text-gray-700">CMAS</span>
+          </div>
+          <div class="bg-white/60 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-sm font-semibold text-gray-700">STATE DBE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-gray-200 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-600 text-sm">© 2024 GJH INC. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="text-sm text-gray-600 hover:text-blue-600">Privacy Policy</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-blue-600">Terms of Service</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-blue-600">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</htmlCode></element>
+                    <div id="page_complete">
+                    <script>
+                        console.log('Page complete');
+                    </script>
+                    </body>
+                    </html>
+                
