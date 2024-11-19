@@ -182,867 +182,820 @@
          </main>
       </div>
    </body>
-</html><element id="4141aff0-9af0-499a-a110-bbaef8468021" data-section-id="4141aff0-9af0-499a-a110-bbaef8468021">
+</html><element id="6e20c85f-d01f-456a-94c3-ceb1c96df135" data-section-id="6e20c85f-d01f-456a-94c3-ceb1c96df135">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3B82F6', // Changed to blue
-                        light: {
-                            DEFAULT: '#FFFFFF',
-                            50: '#F9FAFB',
-                            100: '#F3F4F6',
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'gradient-x': 'gradient-x 15s ease infinite',
-                        'gradient-y': 'gradient-y 15s ease infinite',
-                        'gradient-xy': 'gradient-xy 15s ease infinite',
-                    },
-                    keyframes: {
-                        'gradient-y': {
-                            '0%, 100%': {
-                                'background-size': '400% 400%',
-                                'background-position': 'center top'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'center center'
-                            }
-                        },
-                        'gradient-x': {
-                            '0%, 100%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'left center'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'right center'
-                            }
-                        },
-                        'gradient-xy': {
-                            '0%, 100%': {
-                                'background-size': '400% 400%',
-                                'background-position': 'left center'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'right center'
-                            }
-                        }
-                    }
-                }
-            },
-            plugins: []
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      colors: {
+        primary: {
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4338ca',  // Updated primary color
+          700: '#3730a3',
+          800: '#312e81',
+          900: '#1e1b4b',
+        },
+        'glassmorphic': 'rgba(255, 255, 255, 0.1)',
+      },
+      animation: {
+        'float': 'float 3s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         }
-    </script>
+      },
+      backdropBlur: {
+        'xs': '2px',
+      },
+    },
+  },
+}
+</script>
 
-    <div id="root" class="min-h-screen bg-white">
-        <!-- Navbar -->
-        <header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-200 shadow-sm">
-            <nav class="container mx-auto px-4 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <img src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo" class="h-8 w-auto"/>
-                    </div>
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#" class="text-gray-600 hover:text-primary transition-colors">Services</a>
-                        <a href="#" class="text-gray-600 hover:text-primary transition-colors">About</a>
-                        <a href="#" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
-                        <button class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-primary/90 transition-colors">
-                            Get Started
-                        </button>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <!-- Hero Section -->
-        <div class="relative pt-24 pb-32 overflow-hidden">
-            <!-- Background Elements -->
-            <div class="absolute inset-0 z-0">
-                <div class="absolute top-0 -left-4 w-72 h-72 bg-primary/10 rounded-full filter blur-3xl animate-gradient-xy"></div>
-                <div class="absolute bottom-0 -right-4 w-72 h-72 bg-sky-500/10 rounded-full filter blur-3xl animate-gradient-xy"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="container mx-auto px-4 relative z-10 mt-20">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                        Don't Get Left Behind—Dominate the <span class="text-primary">AI Era</span> with AI-Optimized Websites
-                    </h1>
-                    <p class="text-xl text-gray-600 mb-12 leading-relaxed">
-                        In today's rapidly evolving digital landscape, having just a website isn't enough. You need a smart, AI-optimized web presence that stands out in both traditional and AI search results.
-                    </p>
-                    <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
-                        <button class="bg-primary text-white px-8 py-4 rounded-full font-semibold hover:bg-primary/90 transition-colors">
-                            Get Started Now
-                        </button>
-                        <button class="bg-gray-100 text-gray-800 px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors">
-                            Learn More
-                        </button>
-                    </div>
-
-                    <!-- Stats -->
-                    <div class="grid md:grid-cols-3 gap-8 mt-16">
-                        <div class="bg-white/50 backdrop-blur-lg p-6 rounded-xl border border-gray-200 shadow-lg">
-                            <div class="text-primary text-4xl font-bold mb-2">8%</div>
-                            <p class="text-gray-600">Drop in Google search traffic in Q2 2024</p>
-                        </div>
-                        <div class="bg-white/50 backdrop-blur-lg p-6 rounded-xl border border-gray-200 shadow-lg">
-                            <div class="text-primary text-4xl font-bold mb-2">25%</div>
-                            <p class="text-gray-600">AI predicted to capture traditional web traffic</p>
-                        </div>
-                        <div class="bg-white/50 backdrop-blur-lg p-6 rounded-xl border border-gray-200 shadow-lg">
-                            <div class="text-primary text-4xl font-bold mb-2">100%</div>
-                            <p class="text-gray-600">Major search engines adapting AI-based results</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div id="root" class="min-h-screen bg-gradient-to-br from-blue-600/20 via-violet-600/20 to-purple-600/20">
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 backdrop-blur-sm bg-white/70 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="#" class="flex items-center">
+            <img class="h-8 w-auto" src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo">
+          </a>
         </div>
+        
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-8">
+            <a href="#" class="text-gray-800 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+            <a href="#" class="text-gray-800 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+            <a href="#" class="text-gray-800 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+            <a href="#" class="text-gray-800 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+            <a href="#" class="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 transition-colors">Get Started</a>
+          </div>
+        </div>
+      </div>
     </div>
-</head>
-</html></element><element id="44c0447f-5809-4dc3-b639-9189d59b2a61" data-section-id="44c0447f-5809-4dc3-b639-9189d59b2a61">
+  </nav>
 
-<div id="root" class="relative bg-white py-24 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0">
-        <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-300/10 rounded-full filter blur-3xl animate-pulse"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-blue-500 font-medium text-sm mb-3">THE AI REVOLUTION</h2>
-            <h3 class="text-4xl font-bold text-gray-800 mb-6">The AI Revolution is Here. Are You Ready?</h3>
-            <p class="text-xl text-gray-600">The internet is changing, and so should your approach to websites</p>
-        </div>
-
-        <!-- Stats Grid -->
-        <div class="grid md:grid-cols-3 gap-8 mb-20">
-            <!-- Stat Card 1 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-300/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="text-3xl text-blue-500 mb-4">🔍</div>
-                    <div class="text-4xl font-bold text-gray-800 mb-2">8%</div>
-                    <p class="text-gray-600">Google search traffic dropped in Q2 2024</p>
-                </div>
-            </div>
-
-            <!-- Stat Card 2 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-300/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="text-3xl text-blue-500 mb-4">🤖</div>
-                    <div class="text-4xl font-bold text-gray-800 mb-2">25%</div>
-                    <p class="text-gray-600">AI predicted to capture traditional web traffic</p>
-                </div>
-            </div>
-
-            <!-- Stat Card 3 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-300/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="text-3xl text-blue-500 mb-4">🚀</div>
-                    <div class="text-4xl font-bold text-gray-800 mb-2">100%</div>
-                    <p class="text-gray-600">Major search engines adapting AI-based results</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="max-w-3xl mx-auto text-center">
-            <p class="text-xl text-gray-700 mb-8">Don't get left behind. Embrace the future with GJH Consulting's AI-optimized web development services.</p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="relative group/btn">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full blur opacity-30 group-hover/btn:opacity-100 transition duration-500"></div>
-                    <div class="relative flex items-center justify-center px-8 py-4 bg-blue-500 rounded-full">
-                        <span class="text-white font-semibold group-hover/btn:text-white transition-colors">
-                            Get Started Now
-                        </span>
-                        <svg class="ml-2 w-5 h-5 text-white group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </div>
-</div></element><element id="fbbb88ba-4831-44b0-8e58-1d52c680e57c" data-section-id="fbbb88ba-4831-44b0-8e58-1d52c680e57c">
-
-<div id="root" class="relative bg-white py-24 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full filter blur-3xl animate-pulse"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-blue-600 font-medium text-sm mb-3">WHAT SETS GJH APART</h2>
-            <h3 class="text-4xl font-bold text-gray-900 mb-6">We Don't Just Build Websites, We Craft AI-Friendly Experiences</h3>
-            <p class="text-xl text-gray-600">At GJH Consulting, we implement cutting-edge AI strategies to ensure your website excels in both traditional and AI-powered search landscapes.</p>
-        </div>
-
-        <!-- Features Grid -->
-        <div class="grid md:grid-cols-3 gap-8 mb-20">
-            <!-- Feature Card 1 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 h-full shadow-lg">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                            </svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900">Advanced SEO Techniques</h4>
-                    </div>
-                    <p class="text-gray-600">Ensuring your site ranks high in traditional search results through advanced optimization strategies</p>
-                </div>
-            </div>
-
-            <!-- Feature Card 2 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 h-full shadow-lg">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-                            </svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900">AI-Friendly Metadata</h4>
-                    </div>
-                    <p class="text-gray-600">Optimizing your content specifically for AI-powered search engines and platforms</p>
-                </div>
-            </div>
-
-            <!-- Feature Card 3 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 h-full shadow-lg">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                            </svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900">Structured Data Markup</h4>
-                    </div>
-                    <p class="text-gray-600">Making your site easily interpretable by AI systems for better visibility</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- AI Platforms Section -->
-        <div class="max-w-3xl mx-auto text-center">
-            <h4 class="text-xl font-semibold text-gray-900 mb-6">We optimize for traffic from:</h4>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-                <div class="bg-white/50 backdrop-blur-xl shadow-lg rounded-lg py-3 px-4 text-gray-700 border border-gray-200">ChatGPT</div>
-                <div class="bg-white/50 backdrop-blur-xl shadow-lg rounded-lg py-3 px-4 text-gray-700 border border-gray-200">Gemini AI</div>
-                <div class="bg-white/50 backdrop-blur-xl shadow-lg rounded-lg py-3 px-4 text-gray-700 border border-gray-200">Claude</div>
-                <div class="bg-white/50 backdrop-blur-xl shadow-lg rounded-lg py-3 px-4 text-gray-700 border border-gray-200">Perplexity</div>
-                <div class="bg-white/50 backdrop-blur-xl shadow-lg rounded-lg py-3 px-4 text-gray-700 border border-gray-200">More...</div>
-            </div>
-            
-            <div class="inline-flex items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors">
-                <span>Learn more about our optimization techniques</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-</div></element><element id="99ae1d5f-29bb-4eb9-b6c3-9dfcb3305c4b" data-section-id="99ae1d5f-29bb-4eb9-b6c3-9dfcb3305c4b">
-
-<div id="root" class="relative bg-white py-24 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0">
-        <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full filter blur-3xl animate-pulse"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-blue-500 font-medium text-sm mb-3">OUR SOLUTIONS</h2>
-            <h3 class="text-4xl font-bold text-gray-800 mb-6">Comprehensive AI Web Solutions</h3>
-            <p class="text-xl text-gray-600">Flexible Options to Elevate Your Online Presence</p>
-        </div>
-
-        <!-- Services Grid -->
-        <div class="grid lg:grid-cols-3 gap-8">
-            <!-- Service Card 1 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative h-full bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🌐</span>
-                        </div>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Full AI-Optimized Website Development</h4>
-                    <p class="text-gray-600 mb-6">We build your entire web presence from scratch, meticulously designed to excel in both human and AI-powered search landscapes.</p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Custom Design
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            AI Optimization
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Full Development
-                        </li>
-                    </ul>
-                    <button class="w-full bg-blue-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-blue-600 transition-colors">
-                        Learn More
-                    </button>
-                </div>
-            </div>
-
-            <!-- Service Card 2 -->
-            <div class="relative group lg:translate-y-8">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative h-full bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🔍</span>
-                        </div>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Comprehensive Website AI Audit</h4>
-                    <p class="text-gray-600 mb-6">Not ready for a full rebuild? Our detailed AI optimization audit provides in-depth analysis and recommendations.</p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Technical Analysis
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            AI Score Report
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Optimization Plan
-                        </li>
-                    </ul>
-                    <button class="w-full bg-blue-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-blue-600 transition-colors">
-                        Get Audit
-                    </button>
-                </div>
-            </div>
-
-            <!-- Service Card 3 -->
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative h-full bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🚀</span>
-                        </div>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Standalone AI Optimization</h4>
-                    <p class="text-gray-600 mb-6">Enhance your existing website with our specialized AI optimization package for immediate results.</p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Quick Implementation
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Core Optimizations
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Monthly Updates
-                        </li>
-                    </ul>
-                    <button class="w-full bg-blue-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-blue-600 transition-colors">
-                        Get Started
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div></element><element id="ba46da7a-40d6-48ed-8c72-cd97d054cd6f" data-section-id="ba46da7a-40d6-48ed-8c72-cd97d054cd6f">
-
-<div id="root" class="relative bg-white py-24 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0">
-        <div class="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-blue-600 font-medium text-sm mb-3">OPTIMIZATION FEATURES</h2>
-            <h3 class="text-4xl font-bold text-gray-900 mb-6">Advanced AI Optimization Technologies</h3>
-            <p class="text-xl text-gray-600">Leveraging cutting-edge techniques to capture traffic from next-generation platforms</p>
-        </div>
-
-        <!-- Features Grid -->
-        <div class="grid lg:grid-cols-2 gap-8 mb-20">
-            <!-- Left Column: Feature List -->
-            <div class="space-y-6">
-                <!-- Feature Item -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-lg p-6 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <div class="size-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                                    <svg class="size-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold text-gray-900 mb-2">AI-First Architecture</h4>
-                                <p class="text-gray-600">Built from the ground up with AI crawlers and interpretation in mind</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Item -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-lg p-6 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <div class="size-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                                    <svg class="size-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Semantic Markup</h4>
-                                <p class="text-gray-600">Enhanced content structure for better AI understanding and interpretation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Item -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                    <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-lg p-6 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <div class="size-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                                    <svg class="size-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-semibold text-gray-900 mb-2">Structured Data</h4>
-                                <p class="text-gray-600">Rich data markup for enhanced AI content understanding</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Platform Support -->
-            <div class="relative group bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                <h4 class="text-xl font-semibold text-gray-900 mb-8">Optimized for Leading AI Platforms</h4>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-50/80 rounded-lg p-4 flex items-center gap-3 backdrop-blur-sm">
-                        <div class="size-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span class="text-blue-600">AI</span>
-                        </div>
-                        <span class="text-gray-900">ChatGPT</span>
-                    </div>
-                    
-                    <div class="bg-gray-50/80 rounded-lg p-4 flex items-center gap-3 backdrop-blur-sm">
-                        <div class="size-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span class="text-blue-600">G</span>
-                        </div>
-                        <span class="text-gray-900">Gemini AI</span>
-                    </div>
-                    
-                    <div class="bg-gray-50/80 rounded-lg p-4 flex items-center gap-3 backdrop-blur-sm">
-                        <div class="size-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span class="text-blue-600">C</span>
-                        </div>
-                        <span class="text-gray-900">Claude</span>
-                    </div>
-                    
-                    <div class="bg-gray-50/80 rounded-lg p-4 flex items-center gap-3 backdrop-blur-sm">
-                        <div class="size-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                            <span class="text-blue-600">P</span>
-                        </div>
-                        <span class="text-gray-900">Perplexity</span>
-                    </div>
-                </div>
-
-                <div class="mt-8 p-4 bg-gray-50/80 rounded-lg backdrop-blur-sm">
-                    <div class="flex items-center gap-3 text-gray-600">
-                        <svg class="size-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        New AI platforms are continuously added to our optimization scope
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div></element><element id="a370088f-57f1-49c6-8310-86a006f8dbc4" data-section-id="a370088f-57f1-49c6-8310-86a006f8dbc4">
-
-<div id="root" class="relative bg-white py-24 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-300/10 rounded-full filter blur-3xl animate-pulse"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-blue-500 font-medium text-sm mb-3">SUCCESS STORIES</h2>
-            <h3 class="text-4xl font-bold text-gray-800 mb-6">Be an Early Adopter, Reap the Rewards</h3>
-            <p class="text-xl text-gray-600">"The early bird catches the worm, and the early adopter catches the market."</p>
-        </div>
-
-        <!-- Case Studies Grid -->
-        <div class="grid lg:grid-cols-2 gap-8 mb-20">
-            <!-- Featured Case Study -->
-            <div class="relative group lg:col-span-2">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-300/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div class="relative bg-white/50 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <div class="flex items-center gap-4 mb-6">
-                                <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-quit.png" alt="Client Logo" class="h-12 w-auto"/>
-                            </div>
-                            <div class="mb-6">
-                                <h4 class="text-2xl font-bold text-gray-800 mb-4">40% Traffic Increase</h4>
-                                <p class="text-gray-600 mb-4">"Since GJH optimized our website for AI, we've seen a 40% increase in traffic from AI-powered search engines. It's opened up a whole new customer base for us!"</p>
-                                <div class="flex items-center gap-4">
-                                    <div class="flex-shrink-0">
-                                        <div class="size-12 rounded-full bg-blue-500/10 flex items-center justify-center">
-                                            <span class="text-blue-500 font-bold">SJ</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="text-gray-800 font-semibold">Sarah J.</div>
-                                        <div class="text-gray-600">E-commerce Entrepreneur</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="bg-white/70 rounded-lg p-4 shadow-md backdrop-blur-sm">
-                                <div class="text-blue-500 font-bold text-2xl mb-2">40%</div>
-                                <div class="text-gray-700">Increase in AI traffic</div>
-                            </div>
-                            <div class="bg-white/70 rounded-lg p-4 shadow-md backdrop-blur-sm">
-                                <div class="text-blue-500 font-bold text-2xl mb-2">65%</div>
-                                <div class="text-gray-700">Higher conversion rate</div>
-                            </div>
-                            <div class="bg-white/70 rounded-lg p-4 shadow-md backdrop-blur-sm">
-                                <div class="text-blue-500 font-bold text-2xl mb-2">3x</div>
-                                <div class="text-gray-700">ROI improvement</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Client Logos -->
-            <div class="lg:col-span-2">
-                <div class="text-center mb-8">
-                    <h4 class="text-gray-800 text-xl font-semibold">Trusted by Industry Leaders</h4>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                    <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-berkowitz.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
-                    <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-dominos.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
-                    <img src="https://www.tawk.to/wp-content/uploads/2020/04/cliente-adidas.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
-                    <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-chevrolet.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity"/>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
+  <!-- Hero Section -->
+  <div class="relative pt-16 pb-32 overflow-hidden">
+    <div class="relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div class="text-center">
-            <a class="inline-flex items-center gap-x-2 py-3 px-6 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition-colors" href="#">
-                View More Success Stories
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-            </a>
+          <h1 class="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+            <span class="block">Don't Get Left Behind—</span>
+            <span class="block text-primary-600">Dominate the AI Era</span>
+            <span class="block">with AI-Optimized Websites</span>
+          </h1>
+          <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            In today's rapidly evolving digital landscape, having just a website isn't enough. You need a smart, AI-optimized web presence that stands out in both traditional and AI search results.
+          </p>
+          <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+            <div class="rounded-md shadow">
+              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10">
+                Get Started
+              </a>
+            </div>
+            <div class="mt-3 sm:mt-0 sm:ml-3">
+              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-primary-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                Learn More
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div></element><element id="3fcd7a7d-e12b-4301-932d-94459f0b1389" data-section-id="3fcd7a7d-e12b-4301-932d-94459f0b1389">
+  </div>
+</div></element><element id="bfd31d68-8710-41c7-8e6e-8bac12c077fb" data-section-id="bfd31d68-8710-41c7-8e6e-8bac12c077fb">
 
-<div id="root" class="bg-white overflow-hidden py-24">
-  <div class="max-w-7xl mx-auto px-4">
-    <!-- Section Header -->
-    <div class="max-w-3xl mx-auto text-center mb-24">
-      <span class="inline-block text-blue-600 font-medium text-sm mb-3">SUCCESS STORIES</span>
-      <h2 class="text-gray-900 font-bold text-3xl md:text-5xl md:leading-tight mb-4">
-        Real Results from Real Clients
+<div id="root" class="relative py-20 overflow-hidden bg-gradient-to-br from-blue-600/10 via-violet-600/10 to-purple-600/10">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
+        The AI Revolution is Here. Are You Ready?
       </h2>
-      <p class="text-gray-600 text-lg">
-        Discover how businesses like yours are thriving with our AI-optimized web solutions
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        The internet is changing, and so should your approach to websites. Stay ahead of the curve with our AI-optimized solutions.
       </p>
     </div>
 
-    <!-- Testimonials Grid -->
     <div class="grid md:grid-cols-3 gap-8">
-      <!-- Testimonial 1 -->
-      <div class="bg-white/70 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-quit.png" alt="Client Logo" class="h-12 w-auto" />
-        </div>
-        <blockquote class="text-gray-700 leading-relaxed mb-6">
-          "Since GJH optimized our website for AI, we've seen a 40% increase in traffic from AI-powered search engines. It's opened up a whole new customer base for us!"
-        </blockquote>
-        <div class="flex items-center gap-4">
-          <div>
-            <div class="text-gray-900 font-semibold">Sarah J.</div>
-            <div class="text-gray-500 text-sm">E-commerce Entrepreneur</div>
-          </div>
+      <!-- Stat Card 1 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <div class="text-4xl mb-4 text-gray-900">🔍</div>
+          <div class="text-3xl font-bold text-[#4338ca] mb-2">8%</div>
+          <p class="text-gray-600">Google search traffic dropped in Q2 2024</p>
         </div>
       </div>
 
-      <!-- Testimonial 2 -->
-      <div class="bg-white/70 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-berkowitz.png" alt="Client Logo" class="h-12 w-auto" />
-        </div>
-        <blockquote class="text-gray-700 leading-relaxed mb-6">
-          "The AI-friendly metadata implementation has drastically improved our visibility in ChatGPT results. Our web traffic has doubled in just three months."
-        </blockquote>
-        <div class="flex items-center gap-4">
-          <div>
-            <div class="text-gray-900 font-semibold">Michael R.</div>
-            <div class="text-gray-500 text-sm">Tech Startup Founder</div>
-          </div>
+      <!-- Stat Card 2 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <div class="text-4xl mb-4 text-gray-900">🤖</div>
+          <div class="text-3xl font-bold text-[#4338ca] mb-2">25%</div>
+          <p class="text-gray-600">AI predicted to capture traditional web traffic from Google</p>
         </div>
       </div>
 
-      <!-- Testimonial 3 -->
-      <div class="bg-white/70 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 hover:border-blue-500 transition-all duration-300 shadow-lg">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-dominos.png" alt="Client Logo" class="h-12 w-auto" />
-        </div>
-        <blockquote class="text-gray-700 leading-relaxed mb-6">
-          "GJH's structured data markup expertise has put us ahead of our competition. We're now the top result in AI-powered searches in our industry."
-        </blockquote>
-        <div class="flex items-center gap-4">
-          <div>
-            <div class="text-gray-900 font-semibold">David K.</div>
-            <div class="text-gray-500 text-sm">Marketing Director</div>
-          </div>
+      <!-- Stat Card 3 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <div class="text-4xl mb-4 text-gray-900">🚀</div>
+          <div class="text-3xl font-bold text-[#4338ca] mb-2">100%</div>
+          <p class="text-gray-600">Major search engines adopting AI-based results</p>
         </div>
       </div>
     </div>
 
-    <!-- Logos Section -->
-    <div class="mt-24">
-      <p class="text-center text-gray-600 mb-8">Trusted by innovative companies worldwide</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-        <img src="https://www.tawk.to/wp-content/uploads/2020/04/cliente-adidas.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" />
-        <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-chevrolet.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" />
-        <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-euronics.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" />
-        <img src="https://www.tawk.to/wp-content/uploads/2020/04/clients-europcar.png" alt="Client Logo" class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" />
+    <div class="mt-16 text-center">
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Don't get left behind. Embrace the future with GJH Consulting's AI-optimized web development services.
+      </p>
+      <a href="#" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#4338ca] hover:bg-[#4338ca]/90 md:py-4 md:text-lg md:px-10 transition-all duration-300 shadow-lg hover:shadow-xl">
+        Future-Proof Your Website
+        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div></element><element id="543a0564-2c35-4793-9907-42db172e5a4a" data-section-id="543a0564-2c35-4793-9907-42db172e5a4a">
+
+<div id="root" class="relative py-24 bg-gradient-to-br from-[#4338ca]/10 via-violet-600/10 to-purple-600/10">
+  <!-- Decorative Background Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-1/4 right-0 w-72 h-72 bg-[#4338ca]/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 left-0 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+        What Sets GJH Apart?
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        At GJH Consulting, we don't just build ordinary websites; we craft AI-friendly digital experiences that stand out in both traditional and AI-powered search landscapes.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Column: Feature Cards -->
+      <div class="space-y-6">
+        <!-- Feature Card 1 -->
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-[#4338ca]/10 rounded-xl flex items-center justify-center text-[#4338ca]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Advanced SEO Techniques</h3>
+                <p class="text-gray-600">Ensuring your site ranks high in traditional search results through cutting-edge SEO strategies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Card 2 -->
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-[#4338ca]/10 rounded-xl flex items-center justify-center text-[#4338ca]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">AI-Friendly Metadata</h3>
+                <p class="text-gray-600">Optimizing your content specifically for AI-powered search engines and platforms.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Card 3 -->
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-[#4338ca]/10 rounded-xl flex items-center justify-center text-[#4338ca]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Structured Data Markup</h3>
+                <p class="text-gray-600">Making your site easily interpretable by AI systems for improved visibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: AI Platforms -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-6">We Optimize for Next-Gen Platforms</h3>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>ChatGPT</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Gemini AI</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Claude</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Perplexity</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div></element><element id="10248595-f0b9-436a-b505-489a0f44d840" data-section-id="10248595-f0b9-436a-b505-489a0f44d840">
+</div></element><element id="4f9d4d40-f06f-4397-be47-06fc2126b72b" data-section-id="4f9d4d40-f06f-4397-be47-06fc2126b72b">
 
-<div id="root" class="relative bg-white overflow-hidden py-24">
-  <!-- Decorative background elements -->
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-400 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+<div id="root" class="relative py-24 bg-gradient-to-br from-blue-600/10 via-violet-600/10 to-purple-600/10">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"></div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4">
-    <div class="max-w-4xl mx-auto">
-      <!-- Main Content -->
-      <div class="text-center mb-12">
-        <h2 class="text-gray-800 font-bold text-3xl md:text-5xl md:leading-tight mb-6">
-          Ready to Future-Proof Your Web Presence?
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+        Our Comprehensive AI Web Solutions
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Flexible Options to Elevate Your Online Presence Whether you need a complete website overhaul or targeted optimization, GJH Consulting has you covered.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Service Card 1 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative h-full bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex flex-col">
+          <div class="text-4xl mb-6">🌐</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Full AI-Optimized Website Development
+          </h3>
+          <p class="text-gray-600 mb-8 flex-grow">
+            We build your entire web presence from scratch, meticulously designed to excel in both human and AI-powered search landscapes.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Custom Design</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>AI Optimization</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Full Development</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#4338ca] hover:bg-[#3730a3] transition-colors duration-300 mt-auto">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Card 2 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative h-full bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex flex-col">
+          <div class="text-4xl mb-6">🔍</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Comprehensive Website AI Audit
+          </h3>
+          <p class="text-gray-600 mb-8 flex-grow">
+            Not ready for a full rebuild? Our detailed AI optimization audit provides in-depth analysis and actionable insights.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Site Analysis</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>SEO Score</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Action Plan</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#4338ca] hover:bg-[#3730a3] transition-colors duration-300 mt-auto">
+            Get Audit
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Card 3 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative h-full bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex flex-col">
+          <div class="text-4xl mb-6">🚀</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Standalone AI Optimization
+          </h3>
+          <p class="text-gray-600 mb-8 flex-grow">
+            Enhance your existing website with our specialized AI optimization package for immediate improvements.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Quick Implementation</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Core Optimizations</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Instant Results</span>
+            </li>
+          </ul>
+          <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#4338ca] hover:bg-[#3730a3] transition-colors duration-300 mt-auto">
+            Get Started
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></element><element id="8568acda-34b8-43ce-82b5-0db1361e57ef" data-section-id="8568acda-34b8-43ce-82b5-0db1361e57ef">
+
+<div id="root" class="relative py-24 bg-gradient-to-br from-[#4338ca]/10 via-violet-600/10 to-purple-600/10">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-1/3 right-0 w-96 h-96 bg-[#4338ca]/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/3 left-0 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="md:flex md:items-center md:justify-between mb-16">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+          AI-Powered Optimization Features
         </h2>
-        <p class="text-lg text-gray-600 mb-8">
-          Don't wait for the AI revolution to pass you by. Take the first step towards an AI-optimized online presence today.
+        <p class="text-lg text-gray-600">
+          Our cutting-edge optimization techniques ensure your website performs exceptionally well across all platforms.
         </p>
       </div>
+    </div>
 
-      <!-- Contact Form -->
-      <div class="bg-white/40 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 md:p-12 shadow-lg">
-        <form class="space-y-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-              <input type="text" class="w-full px-4 py-3 bg-white/50 border border-gray-200 rounded-xl text-gray-800 focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your full name" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input type="email" class="w-full px-4 py-3 bg-white/50 border border-gray-200 rounded-xl text-gray-800 focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email" />
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
-            <input type="text" class="w-full px-4 py-3 bg-white/50 border border-gray-200 rounded-xl text-gray-800 focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your company name" />
-          </div>
-
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-            <textarea rows="4" class="w-full px-4 py-3 bg-white/50 border border-gray-200 rounded-xl text-gray-800 focus:outline-none focus:border-blue-500 transition-colors" placeholder="Tell us about your project"></textarea>
-          </div>
-
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition-colors">
-              Request a Quote
-              <svg class="ml-2 size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Feature Column 1: Technical Features -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+            </svg>
+            Technical Optimization
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-            </button>
-            <p class="text-sm text-gray-600">
-              No commitment required • Free consultation
-            </p>
+              <p class="text-gray-600">Schema Markup Implementation</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">AI-Friendly URL Structure</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">Semantic HTML Optimization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Column 2: Content Features -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Content Enhancement
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">AI-Optimized Content Structure</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">Natural Language Processing</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">Context-Aware Metadata</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Column 3: Performance Features -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-[#4338ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+            Performance Boost
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">Advanced Caching Systems</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">AI Response Optimization</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#4338ca] mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <p class="text-gray-600">Fast Loading Times</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></element><element id="8e3a6808-0203-4ab2-9ba9-d6c9036b50a9" data-section-id="8e3a6808-0203-4ab2-9ba9-d6c9036b50a9">
+
+<div id="root" class="relative py-24 bg-gradient-to-br from-blue-600/10 via-violet-600/10 to-purple-600/10">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+        Be an Early Adopter, Reap the Rewards
+      </h2>
+      <p class="text-lg text-gray-600">
+        "The early bird catches the worm, and the early adopter catches the market."
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <!-- Featured Testimonial -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="relative">
+              <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/20 to-violet-500/20 rounded-full blur"></div>
+              <img class="relative size-16 rounded-full border-2 border-white" src="https://www.tawk.to/wp-content/uploads/2020/04/client-chevrolet.png" alt="Client Avatar" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Sarah J.</h3>
+              <p class="text-gray-600">E-commerce Entrepreneur</p>
+            </div>
+            <div class="ml-auto">
+              <div class="text-4xl text-[#4338ca]">40%</div>
+              <div class="text-sm text-gray-600">Traffic Increase</div>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 mb-6">
+            "Since GJH optimized our website for AI, we've seen a 40% increase in traffic from AI-powered search engines. It's opened up a whole new customer base for us!"
+          </blockquote>
+          <div class="flex gap-2">
+            <span class="px-3 py-1 bg-[#4338ca]/10 text-[#4338ca] rounded-full text-sm">AI Optimization</span>
+            <span class="px-3 py-1 bg-[#4338ca]/10 text-[#4338ca] rounded-full text-sm">E-commerce</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client Logos Grid -->
+      <div class="grid grid-cols-2 gap-6">
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex items-center justify-center">
+            <img class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" src="https://www.tawk.to/wp-content/uploads/2020/04/client-berkowitz.png" alt="Client Logo" />
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex items-center justify-center">
+            <img class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" src="https://www.tawk.to/wp-content/uploads/2020/04/client-dominos.png" alt="Client Logo" />
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex items-center justify-center">
+            <img class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" src="https://www.tawk.to/wp-content/uploads/2020/04/client-euronics.png" alt="Client Logo" />
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#4338ca]/10 to-violet-500/10 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative bg-white/60 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:border-[#4338ca]/50 transition-all duration-300 flex items-center justify-center">
+            <img class="h-12 w-auto mx-auto opacity-60 hover:opacity-100 transition-opacity" src="https://www.tawk.to/wp-content/uploads/2020/04/clients-europcar.png" alt="Client Logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-[#4338ca] hover:bg-[#4338ca]/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+        Ready to Future-Proof Your Web Presence?
+        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+      </a>
+      <p class="mt-4 text-gray-600">Take the first step towards an AI-optimized online presence today.</p>
+    </div>
+  </div>
+</div></element><element id="ccd25a0f-3454-4416-bb5d-70b701828e6e" data-section-id="ccd25a0f-3454-4416-bb5d-70b701828e6e">
+
+<div id="root" class="relative bg-white">
+  <!-- Background with blue-violet gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-violet-50 to-white pointer-events-none"></div>
+
+  <!-- Glass container -->
+  <div class="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+    <div class="backdrop-blur-lg bg-white/30 rounded-3xl border border-white/20 p-8 md:p-12 shadow-xl">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          Don't Get Left Behind in the AI Era
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Take the first step towards an AI-optimized online presence today. Join the companies already seeing 40% increases in AI-powered search traffic.
+        </p>
+        <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-6">
+          <a href="#" class="rounded-full bg-[#4338ca] px-8 py-4 text-lg font-semibold text-white shadow hover:bg-[#4338ca]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4338ca] transition-all duration-200">
+            Request a Quote
+          </a>
+          <a href="#" class="rounded-full bg-white/80 backdrop-blur px-8 py-4 text-lg font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-all duration-200">
+            Learn More
+          </a>
+        </div>
+        
+        <!-- Stats section -->
+        <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <div class="flex flex-col items-center backdrop-blur-lg bg-white/40 rounded-xl p-6">
+            <div class="text-4xl font-bold text-[#4338ca]">40%</div>
+            <div class="mt-2 text-sm text-gray-600">Increase in AI Search Traffic</div>
+          </div>
+          <div class="flex flex-col items-center backdrop-blur-lg bg-white/40 rounded-xl p-6">
+            <div class="text-4xl font-bold text-[#4338ca]">25%</div>
+            <div class="mt-2 text-sm text-gray-600">AI Search Market Share</div>
+          </div>
+          <div class="flex flex-col items-center backdrop-blur-lg bg-white/40 rounded-xl p-6">
+            <div class="text-4xl font-bold text-[#4338ca]">8%</div>
+            <div class="mt-2 text-sm text-gray-600">Drop in Traditional Search</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></element><element id="545e1e39-19aa-434b-b4a2-f7ee0efd02ae" data-section-id="545e1e39-19aa-434b-b4a2-f7ee0efd02ae">
+
+<div id="root" class="relative bg-white">
+  <!-- Background with blue-violet gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-violet-50 to-white pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto">
+      <!-- Glass container -->
+      <div class="backdrop-blur-lg bg-white/30 rounded-3xl border border-white/20 p-8 md:p-12 shadow-xl">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900">Future-Proof Your Web Presence</h2>
+          <p class="mt-4 text-lg text-gray-600">Ready to dominate in the AI era? Let's discuss your project.</p>
+        </div>
+
+        <form action="#" method="POST" class="space-y-6">
+          <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+            <div>
+              <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+              <div class="mt-1">
+                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4338ca] focus:ring-[#4338ca] bg-white/50 backdrop-blur" />
+              </div>
+            </div>
+
+            <div>
+              <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+              <div class="mt-1">
+                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4338ca] focus:ring-[#4338ca] bg-white/50 backdrop-blur" />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+              <div class="mt-1">
+                <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4338ca] focus:ring-[#4338ca] bg-white/50 backdrop-blur" />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+              <div class="mt-1">
+                <input type="text" name="company" id="company" autocomplete="organization" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4338ca] focus:ring-[#4338ca] bg-white/50 backdrop-blur" />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="project-type" class="block text-sm font-medium text-gray-700">What are you interested in?</label>
+              <div class="mt-1">
+                <select id="project-type" name="project-type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4338ca] focus:ring-[#4338ca] bg-white/50 backdrop-blur">
+                  <option>Full AI-Optimized Website Development</option>
+                  <option>Comprehensive Website AI Audit</option>
+                  <option>Standalone AI Optimization Services</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+              <div class="mt-1">
+                <textarea id="message" name="message" rows="4" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#4338ca] focus:ring-[#4338ca] bg-white/50 backdrop-blur"></textarea>
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <button type="submit" class="w-full inline-flex items-center justify-center rounded-full border border-transparent bg-[#4338ca] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#3730a3] focus:outline-none focus:ring-2 focus:ring-[#4338ca] focus:ring-offset-2 transition-all duration-200">
+                Request Quote
+              </button>
+            </div>
           </div>
         </form>
-      </div>
 
-      <!-- Trust Badges -->
-      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="text-blue-500 text-2xl font-bold mb-1">24/7</div>
-          <div class="text-sm text-gray-600">Support Available</div>
-        </div>
-        <div class="text-center">
-          <div class="text-blue-500 text-2xl font-bold mb-1">100%</div>
-          <div class="text-sm text-gray-600">Satisfaction</div>
-        </div>
-        <div class="text-center">
-          <div class="text-blue-500 text-2xl font-bold mb-1">40%+</div>
-          <div class="text-sm text-gray-600">Traffic Increase</div>
-        </div>
-        <div class="text-center">
-          <div class="text-blue-500 text-2xl font-bold mb-1">500+</div>
-          <div class="text-sm text-gray-600">Projects Completed</div>
+        <div class="mt-8 text-center text-sm text-gray-500">
+          By submitting this form, you agree to our 
+          <a href="#" class="font-medium text-[#4338ca] hover:text-[#3730a3]">Privacy Policy</a> and
+          <a href="#" class="font-medium text-[#4338ca] hover:text-[#3730a3]">Terms of Service</a>.
         </div>
       </div>
     </div>
   </div>
-</div></element><element id="a5cd8738-5fa0-45df-a805-dd4b49649f0a" data-section-id="a5cd8738-5fa0-45df-a805-dd4b49649f0a">
+</div></element><element id="d2b9d6e0-8b12-4458-bc34-1374f70f455c" data-section-id="d2b9d6e0-8b12-4458-bc34-1374f70f455c">
 
-<div id="root" class="bg-white border-t border-gray-200">
-  <footer class="max-w-7xl mx-auto py-12 px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-      <!-- Logo & Info -->
-      <div class="col-span-1 md:col-span-2">
-        <img src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo" class="h-8 w-auto mb-4"/>
-        <p class="text-gray-600 mb-4 max-w-md backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow-lg">
-          Leading the revolution in AI-optimized web development. Future-proof your online presence with our cutting-edge solutions.
-        </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
-            <span class="sr-only">LinkedIn</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </a>
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
-            <span class="sr-only">Twitter</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
+<div id="root" class="relative bg-white">
+  <!-- Background with blue-violet gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#4338ca]/10 via-violet-50 to-white pointer-events-none"></div>
 
-      <!-- Quick Links -->
-      <div class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow-lg">
-        <h3 class="text-gray-800 font-semibold mb-4">Services</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">AI-Optimized Development</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Website AI Audit</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">AI SEO Services</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Consulting</a></li>
-        </ul>
-      </div>
+  <footer class="relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="backdrop-blur-lg bg-white/30 rounded-3xl border border-white/20 p-8 md:p-12 shadow-xl">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <!-- Company Info -->
+          <div class="col-span-1 md:col-span-2">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo" class="h-8 w-auto mb-6"/>
+            <p class="text-gray-600 mb-6">
+              Pioneering AI-optimized web development for the next generation of digital success.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-[#4338ca] hover:text-[#4338ca]/80">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-[#4338ca] hover:text-[#4338ca]/80">
+                <span class="sr-only">Twitter</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
 
-      <!-- Company -->
-      <div class="backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow-lg">
-        <h3 class="text-gray-800 font-semibold mb-4">Company</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">About Us</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Case Studies</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Blog</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a></li>
-        </ul>
-      </div>
-    </div>
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-gray-900 font-semibold mb-4">Services</h3>
+            <ul class="space-y-3">
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">AI-Optimized Development</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">Website AI Audit</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">AI Optimization Services</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">SEO Services</a></li>
+            </ul>
+          </div>
 
-    <!-- Certifications -->
-    <div class="border-t border-gray-200 pt-8 mb-8">
-      <div class="flex flex-wrap gap-4 items-center justify-center md:justify-start backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow-lg">
-        <div class="flex items-center gap-2 text-gray-600">
-          <span>SBCM #2001776</span>
+          <!-- Company -->
+          <div>
+            <h3 class="text-gray-900 font-semibold mb-4">Company</h3>
+            <ul class="space-y-3">
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">About Us</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">Case Studies</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">Blog</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-[#4338ca]">Contact</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="flex items-center gap-2 text-gray-600">
-          <span>CMAS</span>
-        </div>
-        <div class="flex items-center gap-2 text-gray-600">
-          <span>STATE DBE</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Bottom Bar -->
-    <div class="border-t border-gray-200 pt-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 backdrop-blur-sm bg-white/30 p-4 rounded-lg shadow-lg">
-        <div class="text-gray-600 text-sm">
-          © 2024 GJH INC. All rights reserved.
-        </div>
-        <div class="flex gap-6">
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors text-sm">Privacy Policy</a>
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors text-sm">Terms of Service</a>
-          <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors text-sm">Cookie Policy</a>
+        <div class="mt-12 pt-8 border-t border-gray-200">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-500 text-sm">
+              © 2024 GJH INC. All rights reserved.
+            </div>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" class="text-gray-500 hover:text-[#4338ca] text-sm">Privacy Policy</a>
+              <a href="#" class="text-gray-500 hover:text-[#4338ca] text-sm">Terms of Service</a>
+              <a href="#" class="text-gray-500 hover:text-[#4338ca] text-sm">Cookie Policy</a>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-center space-x-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-berkowitz.png" alt="Client Logo" class="h-12 w-auto opacity-50 hover:opacity-75 transition-opacity"/>
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-dominos.png" alt="Client Logo" class="h-12 w-auto opacity-50 hover:opacity-75 transition-opacity"/>
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-quit.png" alt="Client Logo" class="h-12 w-auto opacity-50 hover:opacity-75 transition-opacity"/>
+          </div>
         </div>
       </div>
     </div>

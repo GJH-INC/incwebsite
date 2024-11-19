@@ -1,0 +1,1149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="AI-generated website">
+      <meta name="theme-color" content="#ffffff">
+      
+      <!-- Performance optimization: Load critical CSS first -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="style">
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+      
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: '#3B82F6',
+                secondary: '#10B981',
+                accent: '#8B5CF6',
+              },
+              fontFamily: {
+                sans: ['Inter', 'system-ui', 'sans-serif'],
+                heading: ['Inter', 'system-ui', 'sans-serif'],
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'slide-up': 'slideUp 0.5s ease-out',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['group-hover'],
+              transform: ['group-hover'],
+              scale: ['group-hover'],
+            },
+          },
+        }
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script defer src="https://preline.co/assets/vendor/preline/dist/index.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+      <!-- Icons - Load async -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+
+      <!-- Minimal Animation CSS -->
+      <style>
+        /* Core Animations */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+          from { transform: translateY(20px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Section Padding */
+        section {
+          padding: clamp(2rem, 5vw, 6.25rem) 0;
+          scroll-margin-top: 5rem;
+        }
+
+        /* Performance Optimizations */
+        img {
+          content-visibility: auto;
+          contain: content;
+        }
+
+        /* Core Layout Classes */
+        .container {
+          width: min(100% - 2rem, 75rem);
+          margin-inline: auto;
+        }
+
+        /* Responsive Typography */
+        :root {
+          --fluid-min-width: 320;
+          --fluid-max-width: 1140;
+          --fluid-min-size: 16;
+          --fluid-max-size: 18;
+          --fluid-min-scale: 1.2;
+          --fluid-max-scale: 1.333;
+        }
+
+        /* Add smooth scrolling only if user hasn't requested reduced motion */
+        @media (prefers-reduced-motion: no-preference) {
+          html {
+            scroll-behavior: smooth;
+          }
+        }
+      </style>
+
+      <!-- Enhanced Image Handler -->
+      <script>
+        // Lazy loading and error handling for images
+        document.addEventListener('DOMContentLoaded', () => {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                  img.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              }
+            });
+          }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+          });
+
+          const loadImage = (img) => {
+            if ('loading' in HTMLImageElement.prototype) {
+              img.loading = 'lazy';
+            }
+            
+            // Enhanced error handling
+            img.onerror = () => {
+              const width = img.getAttribute('width') || img.clientWidth || 300;
+              const height = img.getAttribute('height') || img.clientHeight || 200;
+              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
+              img.alt = 'Image unavailable';
+              img.classList.add('error-image');
+            };
+
+            if (img.dataset.src) {
+              imageObserver.observe(img);
+            }
+          };
+
+          // Process existing images
+          document.querySelectorAll('img[data-src]').forEach(loadImage);
+
+          // Watch for new images
+          new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1 && node.tagName === 'IMG') {
+                  loadImage(node);
+                }
+                if (node.nodeType === 1) {
+                  node.querySelectorAll('img[data-src]').forEach(loadImage);
+                }
+              });
+            });
+          }).observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });
+
+        // Performance monitoring
+        if ('performance' in window) {
+          window.addEventListener('load', () => {
+            const timing = performance.getEntriesByType('navigation')[0];
+            console.log(`Page load time: ${timing.loadEventEnd - timing.navigationStart}ms`);
+          });
+        }
+      </script>
+   </head>
+   <body class="antialiased leading-normal  ">
+      <div id="page-wrapper" class="">
+         <main class="">
+           <!-- Content will be injected here -->
+         </main>
+      </div>
+   </body>
+</html><element id="e9bd4515-9b38-4c27-984d-bdf2dd508ff8" data-section-id="e9bd4515-9b38-4c27-984d-bdf2dd508ff8">
+
+<htmlCode>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#818cf8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'gradient-y': 'gradient-y 15s ease infinite',
+                        'gradient-xy': 'gradient-xy 15s ease infinite',
+                    },
+                    keyframes: {
+                        'gradient-y': {
+                            '0%, 100%': {
+                                'background-size': '400% 400%',
+                                'background-position': 'center top'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'center center'
+                            }
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'gradient-xy': {
+                            '0%, 100%': {
+                                'background-size': '400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-violet-50 to-purple-50">
+
+<div id="root">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/70 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <img class="h-8 w-auto" src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo">
+                </div>
+                
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center">
+                    <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full text-sm font-medium transition-all">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-br from-blue-100/50 via-violet-100/50 to-purple-100/50 pt-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+            <div class="text-center">
+                <h1 class="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+                    <span class="block">Our Services</span>
+                    <span class="block text-primary mt-3">A commitment to innovation and sustainability</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    We offer comprehensive solutions tailored to your organization's needs, from consulting and technology services to managed services.
+                </p>
+                <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                    <div class="rounded-full shadow">
+                        <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary hover:bg-primary/90 md:py-4 md:text-lg md:px-10">
+                            Get Started
+                        </a>
+                    </div>
+                    <div class="mt-3 rounded-full shadow sm:mt-0 sm:ml-3">
+                        <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative blob shapes -->
+        <div class="absolute top-0 left-0 w-40 h-40 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 right-0 w-40 h-40 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-0 left-1/2 w-40 h-40 bg-violet-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    </div>
+</div>
+
+</body>
+</html>
+</htmlCode></element><element id="270cf7d7-e165-4eed-b009-eb0e9fa14573" data-section-id="270cf7d7-e165-4eed-b009-eb0e9fa14573">
+
+<htmlCode>
+<div id="root" class="bg-gradient-to-br from-blue-50 via-violet-50 to-purple-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-24">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Core Services</h2>
+            <p class="text-lg text-gray-600">A commitment to innovation and sustainability through our comprehensive service offerings</p>
+        </div>
+
+        <!-- Core Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Consulting Card -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 h-full hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-xl mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Consultancy</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Our Consulting Services focus on integrated solutions designed to enhance the performance of your business. By incorporating industry best practices into your business processes and management strategies, we can help you stay ahead of the competition.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                        Learn more
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Technology Card -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 h-full hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-xl mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Technology</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Our Technology Services focus on developing robust, secure and stable technology solutions for your business. By incorporating common sense solutions into seemingly daunting deliverables, we ensure safe project delivery from start to completion.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                        Learn more
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Managed Services Card -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 h-full hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-xl mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Managed Services</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Many companies choose to focus on their core strengths and outsource certain business processes. If you choose to go that route, GJH INC can help you optimize and manage your critical business operations effectively.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                        Learn more
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</htmlCode></element><element id="68c8116e-0418-4bb7-87fd-0bcf77f7bf14" data-section-id="68c8116e-0418-4bb7-87fd-0bcf77f7bf14">
+
+<htmlCode>
+<div id="root" class="bg-gradient-to-br from-blue-50 via-violet-50 to-purple-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Government Contract Consulting Section -->
+        <div class="relative">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-violet-500/20 rounded-full blur-xl animate-pulse"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center p-2 bg-primary/10 rounded-xl mb-6">
+                            <span class="text-2xl">🏛️</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Government Contract Consulting</h2>
+                        <p class="text-gray-600 leading-relaxed mb-8">Navigate the complex world of government contracts with our expert guidance. We'll help you bid, win, and execute RFPs with confidence.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">RFP Strategy Development</h3>
+                                    <p class="text-gray-600">Comprehensive approach to winning government contracts.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Compliance Management</h3>
+                                    <p class="text-gray-600">Ensuring adherence to government regulations and requirements.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Bid Support Services</h3>
+                                    <p class="text-gray-600">Expert assistance throughout the bidding process.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-primary hover:bg-primary/90 transition-colors">
+                                Get Started
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats/Metrics Column -->
+                <div class="relative">
+                    <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl p-8 shadow-lg">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-8">Our Impact in Numbers</h3>
+                            
+                            <div class="grid grid-cols-2 gap-8">
+                                <div>
+                                    <div class="text-3xl font-bold text-primary">500+</div>
+                                    <div class="text-sm text-gray-600 mt-1">Successful Contracts</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-primary">$2B+</div>
+                                    <div class="text-sm text-gray-600 mt-1">Contract Value</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-primary">95%</div>
+                                    <div class="text-sm text-gray-600 mt-1">Success Rate</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-primary">20+</div>
+                                    <div class="text-sm text-gray-600 mt-1">Years Experience</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-8 border-t border-gray-200">
+                                <div class="flex items-center gap-4">
+                                    <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">Government Certified</h4>
+                                        <p class="text-sm text-gray-600">Approved federal contractor with top clearances</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</htmlCode></element><element id="b9e6e82d-8594-4f72-bd21-78ce550149ea" data-section-id="b9e6e82d-8594-4f72-bd21-78ce550149ea">
+
+<htmlCode>
+<div id="root" class="bg-gradient-to-br from-blue-50 via-violet-50 to-purple-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-primary font-semibold text-sm tracking-wider uppercase">Technology Solutions</span>
+            <h2 class="mt-3 text-4xl font-bold text-gray-900">Advanced Technology Services</h2>
+            <p class="mt-4 text-lg text-gray-600">Leveraging cutting-edge technology to drive innovation and growth</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- AI-Optimized Web Development -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:shadow-lg">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <span class="text-2xl">🌐</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">AI-Optimized Web Development</h3>
+                    <p class="text-gray-600 mb-6">Building websites that speak fluently to both humans and AI, ensuring your online presence excels in both traditional and AI-driven search results.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">SEO Optimization</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">AI-Driven Content</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">Responsive Design</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Data Services -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:shadow-lg">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Services</h3>
+                    <p class="text-gray-600 mb-6">With 20 years of data expertise, we transform raw information into actionable insights, driving your business forward in the data-driven age.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">Data Analytics</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">Business Intelligence</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">Predictive Modeling</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- GenAI Solutions -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:shadow-lg">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">GenAI Solutions</h3>
+                    <p class="text-gray-600 mb-6">Harness the power of artificial intelligence to streamline operations, enhance customer experiences, and stay ahead of the curve.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">AI Integration</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">Machine Learning</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-600">Process Automation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-16 text-center">
+            <a href="#" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary hover:bg-primary/90 transition-colors">
+                Explore All Solutions
+                <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+</htmlCode></element><element id="236a86f6-453b-4ba2-8582-545e4a84ce7c" data-section-id="236a86f6-453b-4ba2-8582-545e4a84ce7c">
+
+<htmlCode>
+<div id="root" class="bg-gradient-to-br from-blue-50 via-violet-50 to-purple-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header Section -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-primary font-semibold text-sm tracking-wider uppercase">Managed Services</span>
+            <h2 class="mt-3 text-4xl font-bold text-gray-900">Comprehensive Managed Services</h2>
+            <p class="mt-4 text-lg text-gray-600">Focus on your core business while we handle your critical operations with expertise and precision</p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Business Process Outsourcing -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Business Process Outsourcing</h3>
+                    <p class="text-gray-600">Streamline your operations with our comprehensive BPO services designed to optimize efficiency and reduce costs.</p>
+                </div>
+            </div>
+
+            <!-- Application Outsourcing -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Application Outsourcing</h3>
+                    <p class="text-gray-600">Expert management and maintenance of your critical applications, ensuring optimal performance and reliability.</p>
+                </div>
+            </div>
+
+            <!-- Resource Management -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Resource Management</h3>
+                    <p class="text-gray-600">Efficient allocation and management of your resources to maximize productivity and minimize waste.</p>
+                </div>
+            </div>
+
+            <!-- Help Desk Services -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Help Desk Services</h3>
+                    <p class="text-gray-600">24/7 technical support and assistance to ensure your operations run smoothly without interruption.</p>
+                </div>
+            </div>
+
+            <!-- Infrastructure -->
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-center w-14 h-14 bg-primary/10 rounded-lg mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Infrastructure</h3>
+                    <p class="text-gray-600">Robust infrastructure management services to keep your systems running at peak performance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30"></div>
+            <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 md:p-12 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Business?</h3>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Let's discuss how our services can help you achieve your business goals and stay ahead of the competition.</p>
+                <a href="#" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary hover:bg-primary/90 transition-colors">
+                    Contact Us Today
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</htmlCode></element><element id="159308cb-92f3-4f45-9455-2504b4c41914" data-section-id="159308cb-92f3-4f45-9455-2504b4c41914">
+
+<htmlCode>
+<div id="root" class="bg-gradient-to-br from-blue-50 via-violet-50 to-purple-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Comprehensive solutions tailored to your organization's needs</p>
+        </div>
+
+        <!-- Service Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Government Contract Consulting -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <span class="text-4xl mb-6 block">🏛️</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Government Contract Consulting</h3>
+                    <p class="text-gray-600 mb-6">Navigate the complex world of government contracts with our expert guidance. We'll help you bid, win, and execute RFPs with confidence.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- AI-Optimized Web Development -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <span class="text-4xl mb-6 block">🌐</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">AI-Optimized Web Development</h3>
+                    <p class="text-gray-600 mb-6">Building websites that speak fluently to both humans and AI, ensuring your online presence excels in both traditional and AI-driven search results.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Data Services -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <span class="text-4xl mb-6 block">📊</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Services</h3>
+                    <p class="text-gray-600 mb-6">With 20 years of data expertise, we transform raw information into actionable insights, driving your business forward in the data-driven age.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Automation & Integration -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <span class="text-4xl mb-6 block">⚡</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Automation & Integration</h3>
+                    <p class="text-gray-600 mb-6">Streamline your business operations, increase efficiency, and reduce manual effort through intelligent automation solutions.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- GenAI Solutions -->
+            <div class="group relative">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-violet-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative h-full bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <span class="text-4xl mb-6 block">🤖</span>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">GenAI Solutions</h3>
+                    <p class="text-gray-600 mb-6">Harness the power of artificial intelligence to streamline operations, enhance customer experiences, and stay ahead of the curve.</p>
+                    <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</htmlCode></element><element id="25986b95-88c6-4a41-9edf-8aff517e1d14" data-section-id="25986b95-88c6-4a41-9edf-8aff517e1d14">
+
+<htmlCode>
+<div id="root" class="bg-white">
+  <div class="relative isolate overflow-hidden">
+    <!-- Fancy gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-violet-50/90 to-white pointer-events-none"></div>
+    
+    <!-- Glass morphic overlay -->
+    <div class="absolute inset-0 backdrop-blur-3xl bg-white/30 pointer-events-none"></div>
+
+    <!-- Content container -->
+    <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 relative">
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        <!-- Left content -->
+        <div class="lg:w-1/2">
+          <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
+            Ready to Transform Your Business?
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Let's discuss how our services can help you achieve your business goals and stay ahead of the competition.
+          </p>
+          
+          <!-- Contact options -->
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#" class="rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 text-sm font-semibold text-white shadow-sm hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
+              Get Started
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
+            </a>
+            
+            <a href="#" class="rounded-full bg-white px-8 py-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
+              Schedule a Call
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Right decorative element -->
+        <div class="lg:w-1/2">
+          <div class="relative aspect-square w-full max-w-md mx-auto">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-violet-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+            
+            <!-- Glass card -->
+            <div class="relative bg-white/30 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20 h-full flex flex-col justify-center items-center">
+              <h3 class="text-2xl font-bold text-gray-900 text-center mb-4">Contact Us Today</h3>
+              <div class="space-y-4 w-full">
+                <div class="bg-white/50 backdrop-blur rounded-lg p-4 hover:bg-white/60 transition-colors duration-300">
+                  <div class="text-sm font-medium text-gray-900">Email</div>
+                  <div class="text-gray-600">contact@gjhinc.com</div>
+                </div>
+                <div class="bg-white/50 backdrop-blur rounded-lg p-4 hover:bg-white/60 transition-colors duration-300">
+                  <div class="text-sm font-medium text-gray-900">Phone</div>
+                  <div class="text-gray-600">+1 (555) 123-4567</div>
+                </div>
+                <div class="bg-white/50 backdrop-blur rounded-lg p-4 hover:bg-white/60 transition-colors duration-300">
+                  <div class="text-sm font-medium text-gray-900">Hours</div>
+                  <div class="text-gray-600">Mon-Fri: 9AM - 6PM EST</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+.animate-blob {
+  animation: blob 7s infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+</style>
+</htmlCode></element><element id="931454a1-b24d-465d-92ba-e1980210a4e3" data-section-id="931454a1-b24d-465d-92ba-e1980210a4e3">
+
+<htmlCode>
+<div id="root" class="bg-white relative overflow-hidden py-24">
+  <!-- Fancy gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-violet-50/90 to-white pointer-events-none"></div>
+  
+  <!-- Glass morphic overlay -->
+  <div class="absolute inset-0 backdrop-blur-3xl bg-white/30 pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 class="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
+        What Our Clients Say
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Trusted by industry leaders and innovative organizations worldwide
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-100 to-violet-100 rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative h-full backdrop-blur-xl bg-white/50 border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-quit.png" alt="Client" class="w-12 h-12 rounded-full object-cover bg-gray-100"/>
+            <div>
+              <h4 class="font-semibold text-gray-900">Sarah Anderson</h4>
+              <p class="text-sm text-gray-600">CEO at TechCorp</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 mb-6">
+            "Their government contract consulting services transformed our business approach. The expertise and guidance provided were invaluable to our success."
+          </blockquote>
+          <div class="flex gap-1 text-blue-500">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-100 to-violet-100 rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative h-full backdrop-blur-xl bg-white/50 border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-berkowitz.png" alt="Client" class="w-12 h-12 rounded-full object-cover bg-gray-100"/>
+            <div>
+              <h4 class="font-semibold text-gray-900">Michael Chen</h4>
+              <p class="text-sm text-gray-600">CTO at DataFlow</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 mb-6">
+            "The AI-optimized web development team delivered beyond our expectations. Our online presence has never been stronger."
+          </blockquote>
+          <div class="flex gap-1 text-blue-500">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-100 to-violet-100 rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative h-full backdrop-blur-xl bg-white/50 border border-white/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="https://www.tawk.to/wp-content/uploads/2020/04/client-dominos.png" alt="Client" class="w-12 h-12 rounded-full object-cover bg-gray-100"/>
+            <div>
+              <h4 class="font-semibold text-gray-900">Emily Rodriguez</h4>
+              <p class="text-sm text-gray-600">COO at InnovateCo</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 mb-6">
+            "Their managed services have streamlined our operations significantly. The automation solutions are game-changing."
+          </blockquote>
+          <div class="flex gap-1 text-blue-500">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</htmlCode></element><element id="aa0c7ab8-d01f-43c4-94cf-d1f9123c17a4" data-section-id="aa0c7ab8-d01f-43c4-94cf-d1f9123c17a4">
+
+<htmlCode>
+<div id="root" class="bg-white">
+  <!-- Fancy gradient background -->
+  <div class="relative">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-violet-50/90 to-white pointer-events-none"></div>
+    
+    <!-- Glass morphic overlay -->
+    <div class="absolute inset-0 backdrop-blur-3xl bg-white/30 pointer-events-none"></div>
+
+    <footer class="relative mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
+      <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div class="space-y-8">
+          <img class="h-8 w-auto" src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo"/>
+          <p class="text-sm leading-6 text-gray-600">Transforming businesses through innovative technology solutions since 2004.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-500 hover:text-gray-700">
+              <span class="sr-only">LinkedIn</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-gray-700">
+              <span class="sr-only">Twitter</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Services</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Government Contracts</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">AI Development</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Data Services</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Automation</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 md:mt-0">
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About Us</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Careers</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">News</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Cookie Policy</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 md:mt-0">
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Certifications</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">SBCM #2001776</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">CMAS</a>
+                </li>
+                <li>
+                  <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">STATE DBE</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+        <p class="text-xs leading-5 text-gray-500">&copy; 2024 GJH INC. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</div>
+</htmlCode></element>
+                    <div id="page_complete">
+                    <script>
+                        console.log('Page complete');
+                    </script>
+                    </body>
+                    </html>
+                
