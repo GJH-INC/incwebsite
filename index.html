@@ -220,30 +220,33 @@ tailwind.config = {
 
 <div id="root" class="min-h-screen bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
   <!-- Navbar -->
-  <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/70 border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center">
-          <div class="flex-shrink-0">
-            <h1 class="text-2xl font-bold text-primary">GJH INC</h1>
+  <header>
+        <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/70 border-b border-white/10">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <h1 class="text-2xl font-bold text-primary">GJH INC</h1>
+                </div>
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-center space-x-8">
+                  <a href="./" class="text-primary transition">Home</a>
+                  
+                  <a href="./services.html" class="text-gray-700 hover:text-primary transition">Services</a>
+                  <a href="./webdevelopment.html" class="text-gray-700 hover:text-primary transition">Web development</a>
+                  <a href="./markets.html" class="text-gray-700 hover:text-primary transition">markets</a>
+                  
+                  <a href="./#get-started" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition">
+                    Get Started
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-center space-x-8">
-            <a href="./" class="text-primary transition">Home</a>
-            
-            <a href="./services.html" class="text-gray-700 hover:text-primary transition">Services</a>
-            <a href="./webdevelopment.html" class="text-gray-700 hover:text-primary transition">Web development</a>
-            <a href="./markets.html" class="text-gray-700 hover:text-primary transition">markets</a>
-            
-            <a href="./#get-started" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition">
-              Get Started
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+        </nav>
+  </header>
+
 
   <!-- Hero Section -->
   <div class="relative pt-28 pb-20 sm:pt-36 lg:pt-44 lg:pb-32">
@@ -1024,29 +1027,32 @@ tailwind.config = {
           </div>
         </div>
 
-        <!-- Services -->
-        <div>
-          <h3 class="text-gray-900 font-semibold mb-4">Services</h3>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Government Contract Consulting</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">AI-Optimized Web Development</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Data Services</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Automation Services</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">GenAI Solutions</a></li>
-          </ul>
-        </div>
-
         <!-- Company -->
         <div>
           <h3 class="text-gray-900 font-semibold mb-4">Company</h3>
           <ul class="space-y-3">
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">About Us</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Case Studies</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Certifications</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Partners</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-blue-600">Careers</a></li>
+            <li><a href="/" class="text-gray-600 hover:text-blue-600">Home</a></li>
+            <li><a href="./services.html" class="text-gray-600 hover:text-blue-600">Services</a></li>
+            <li><a href="./webdevelopment.html" class="text-gray-600 hover:text-blue-600">Web Development</a></li>
+            <li><a href="./capablityStatement.html" class="text-gray-600 hover:text-blue-600">capablityStatement</a></li>
+            <li><a href="./careers.html" class="text-gray-600 hover:text-blue-600">Careers</a></li>
+            <li><a href="./markets.html" class="text-gray-600 hover:text-blue-600">Markets</a></li>
           </ul>
         </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-gray-900 font-semibold mb-4">Services</h3>
+          <ul class="space-y-3">
+            <li><a href="./services.html/#gov" class="text-gray-600 hover:text-blue-600">Government Contract Consulting</a></li>
+            <li><a href="./webdevelopment.html" class="text-gray-600 hover:text-blue-600">AI-Optimized Web Development</a></li>
+            <li><a href="./services.html" class="text-gray-600 hover:text-blue-600">Data Services</a></li>
+            <li><a href="./services.html" class="text-gray-600 hover:text-blue-600">Automation Services</a></li>
+            <li><a href="./services.html" class="text-gray-600 hover:text-blue-600">GenAI Solutions</a></li>
+          </ul>
+        </div>
+
+        
 
         <!-- Contact -->
         <div>
@@ -1080,9 +1086,8 @@ tailwind.config = {
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-600 text-sm">© 2024 GJH INC. All rights reserved.</p>
           <div class="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" class="text-sm text-gray-600 hover:text-blue-600">Privacy Policy</a>
-            <a href="#" class="text-sm text-gray-600 hover:text-blue-600">Terms of Service</a>
-            <a href="#" class="text-sm text-gray-600 hover:text-blue-600">Cookie Policy</a>
+            <a href="./privacy.html" class="text-sm text-gray-600 hover:text-blue-600">Privacy Policy</a>
+            <a href="./terms.html" class="text-sm text-gray-600 hover:text-blue-600">Terms of Service</a>
           </div>
         </div>
       </div>
