@@ -63,32 +63,48 @@
 
 <div >
     <!-- Navbar -->
-      <header>
-        <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/70 border-b border-white/10">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <h1 class="text-2xl font-bold text-primary">GJH INC</h1>
-                </div>
-              </div>
-              <div class="hidden md:block">
-                <div class="ml-10 flex items-center space-x-8">
-                  <a href="./" class="text-gray-700 hover:text-primary transition">Home</a>
-                  
-                  <a href="./services.html" class="text-primary transition">Services</a>
-                  <a href="./webdevelopment.html" class="text-gray-700 hover:text-primary transition">Web development</a>
-                  <a href="./markets.html" class="text-gray-700 hover:text-primary transition">markets</a>
-                  
-                  <a href="./#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition">
-                    Get Started
-                  </a>
-                </div>
-              </div>
-            </div>
+<header>
+  <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/60 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <h1 class="text-2xl font-bold text-primary">GJH INC</h1>
           </div>
-        </nav>
-  </header>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-8 ">
+            <a href="./" class="text-gray-700 hover:text-primary transition">Home</a>
+            <a href="./services.html" class="text-primary transition">Services</a>
+            <a href="./webdevelopment.html" class="text-gray-700 hover:text-primary transition">Web development</a>
+            <a href="./markets.html" class="text-gray-700 hover:text-primary transition">Markets</a>
+            <a href="./#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition">
+              Get Started
+            </a>
+          </div>
+        </div>
+        <div class="md:hidden">
+          <button id="menu-button" class="text-gray-700 hover:text-primary focus:outline-none">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden ">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t bg-white/70 ">
+        <a href="./" class="block text-gray-700 hover:text-primary transition py-2 my-1">Home</a>
+        <a href="./services.html" class="block text-primary transition py-2 my-1">Services</a>
+        <a href="./webdevelopment.html" class="block text-gray-700 hover:text-primary transition py-2 my-1">Web development</a>
+        <a href="./markets.html" class="block text-gray-700 hover:text-primary transition py-2 my-1">Markets</a>
+        <a href="./#contact" class="block bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition py-2 my-1 w-fit">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
 
     <!-- Hero Section -->
     <div class="relative bg-gradient-to-br from-blue-100/50 via-violet-100/50 to-purple-100/50 pt-24 overflow-hidden">
@@ -804,6 +820,7 @@
     </div>
   </footer>
 </div>
-                    </body>
+                    <script src="./assets/js/main.js"></script>
+</body>
                     </html>
                 
