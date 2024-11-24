@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+    <title>GJH INC</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-            
-      <!-- Performance optimization: Load critical CSS first -->
-      <link rel="preload" href="https://cdn.tailwindcss.com" as="style">
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+      <meta name="description" content="Strategic consulting, technology services, and managed services for commercial, not-for-profit, and government organizations.">
+      <meta name="keywords" content="strategic consulting, technology services, managed services, government contracts, AI development, data services, automation, GenAI solutions">
+      <meta name="author" content="GJH INC">
+      <meta name="robots" content="index, follow">
       
       <!-- Core CSS -->
-      <script src="https://cdn.tailwindcss.com"></script>
+      <!-- <script src="https://cdn.tailwindcss.com"></script>
       <script>
         tailwind.config = {
           theme: {
@@ -39,8 +39,8 @@
             },
           },
         }
-      </script>
-
+      </script> -->
+      <link rel="stylesheet" href="./assets/css/index.css">
       
       <!-- Optimized Font Loading -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,78 +96,9 @@
           }
         }
       </style>
-
-      <!-- Enhanced Image Handler -->
-      <!-- <script>
-        // Lazy loading and error handling for images
-        document.addEventListener('DOMContentLoaded', () => {
-          const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                  img.src = img.dataset.src;
-                  img.removeAttribute('data-src');
-                  observer.unobserve(img);
-                }
-              }
-            });
-          }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
-          });
-
-          const loadImage = (img) => {
-            if ('loading' in HTMLImageElement.prototype) {
-              img.loading = 'lazy';
-            }
-            
-            // Enhanced error handling
-            img.onerror = () => {
-              const width = img.getAttribute('width') || img.clientWidth || 300;
-              const height = img.getAttribute('height') || img.clientHeight || 200;
-              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
-              img.alt = 'Image unavailable';
-              img.classList.add('error-image');
-            };
-
-            if (img.dataset.src) {
-              imageObserver.observe(img);
-            }
-          };
-
-          // Process existing images
-          document.querySelectorAll('img[data-src]').forEach(loadImage);
-
-          // Watch for new images
-          new MutationObserver((mutations) => {
-            mutations.forEach(mutation => {
-              mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && node.tagName === 'IMG') {
-                  loadImage(node);
-                }
-                if (node.nodeType === 1) {
-                  node.querySelectorAll('img[data-src]').forEach(loadImage);
-                }
-              });
-            });
-          }).observe(document.body, {
-            childList: true,
-            subtree: true
-          });
-        });
-
-        // Performance monitoring
-        if ('performance' in window) {
-          window.addEventListener('load', () => {
-            const timing = performance.getEntriesByType('navigation')[0];
-            console.log(`Page load time: ${timing.loadEventEnd - timing.navigationStart}ms`);
-          });
-        }
-      </script> -->
-
+ 
    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -190,7 +121,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <h1 class="text-2xl font-bold text-primary">GJH INC</h1>
+            <span class="text-2xl font-bold text-primary">GJH INC</span>
           </div>
         </div>
         <div class="hidden md:block">
@@ -205,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="md:hidden">
-          <button id="menu-button" class="text-gray-700 hover:text-primary focus:outline-none">
+          <button id="menu-button" aria-label="menu" class="text-gray-700 hover:text-primary focus:outline-none">
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
@@ -246,7 +177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           
           <div class="flex flex-wrap gap-4">
-            <a href="#contact" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition">
+            <a href="#contact" class="inline-flex items-center bg-[#4338ca]  text-white px-8 py-3 rounded-full hover:bg-[#4338ca]/90 transition">
               Request a Proposal
               <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -259,7 +190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="flex items-center gap-4">
             <div class="flex -space-x-2">
-              <div class="w-12 h-12 rounded-full border-2 border-white bg-primary flex items-center justify-center text-white font-bold">20+</div>
+              <div class="w-12 h-12 rounded-full border-2 border-white bg-[#4338ca]  flex items-center justify-center text-white font-bold">20+</div>
             </div>
             <p class="text-sm text-gray-600">
               Years of Excellence in Data & Technology Services
@@ -273,22 +204,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="grid grid-cols-2 gap-4">
               <div class="bg-white/80 p-6 rounded-xl shadow-lg">
                 <div class="text-primary mb-2">🏛️</div>
-                <h3 class="font-semibold">Gov Contracts</h3>
+                <h2 class="font-semibold">Gov Contracts</h2>
                 <p class="text-sm text-gray-600">Expert guidance for RFPs</p>
               </div>
               <div class="bg-white/80 p-6 rounded-xl shadow-lg">
                 <div class="text-primary mb-2">🌐</div>
-                <h3 class="font-semibold">AI Development</h3>
+                <h2 class="font-semibold">AI Development</h2>
                 <p class="text-sm text-gray-600">Smart web solutions</p>
               </div>
               <div class="bg-white/80 p-6 rounded-xl shadow-lg">
                 <div class="text-primary mb-2">📊</div>
-                <h3 class="font-semibold">Data Services</h3>
+                <h2 class="font-semibold">Data Services</h2>
                 <p class="text-sm text-gray-600">Actionable insights</p>
               </div>
               <div class="bg-white/80 p-6 rounded-xl shadow-lg">
                 <div class="text-primary mb-2">🤖</div>
-                <h3 class="font-semibold">GenAI</h3>
+                <h2 class="font-semibold">GenAI</h2>
                 <p class="text-sm text-gray-600">Future-ready solutions</p>
               </div>
             </div>
@@ -406,7 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="relative flex flex-col justify-center items-center text-center h-full">
           <h3 class="text-xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
           <p class="text-gray-600 mb-6">Let's discuss how we can help transform your business</p>
-          <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+          <a href="#contact" class="inline-flex items-center px-6 py-3 bg-[#4338ca] text-white rounded-full hover:bg-[#4338ca]/90 transition-colors duration-300">
             Contact Us
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -936,8 +867,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               Request a Proposal
             </button>
           </form> -->
-          <iframe data-tally-src="https://tally.so/embed/mRZZpj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="276" frameborder="0" marginheight="0" marginwidth="0" title="Contact form
-"></iframe><script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+          <iframe loading="lazy" data-tally-src="https://tally.so/embed/mRZZpj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="276" frameborder="0" marginheight="0" marginwidth="0" title="Contact form
+"></iframe><script defer>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
         </div>
       </div>
     </div>
@@ -952,7 +883,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Company Info -->
         <div>
           <div class="mb-6">
-            <img src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo" class="h-8 w-auto"/>
+            <!-- <img src="https://www.tawk.to/wp-content/uploads/2020/04/tawk-sitelogo.png" alt="GJH INC Logo" class="h-8 w-auto"/> -->
           </div>
           <p class="text-gray-600 mb-6">
             Strategic consulting technology and managed services for commercial, not-for-profit, and government organizations.
@@ -1005,22 +936,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h3 class="text-gray-900 font-semibold mb-4">Contact</h3>
           <ul class="space-y-3">
             <li class="flex items-center space-x-3">
-              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-              </svg>
-              <a href="tel:+16504561744" class="text-gray-600">Call now</span>
+              <span>
+                  <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+              </span>
+              <a href="tel:+16504561744" class="text-gray-600">Call now</a>
             </li>
             <li class="flex items-center space-x-3">
-              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              <a href="mailto:info@gjh-inc.com"  class="text-gray-600">Email Us</span>
+              <span>
+                  <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+              </span>
+              
+              <a href="mailto:info@gjh-inc.com"  class="text-gray-600">Email Us</a>
             </li>
             <li class="flex items-center space-x-3">
-              <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
+              <span>
+                  <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+              </span>
+              
               <span class="text-gray-600">Vallejo, California</span>
             </li>
           </ul>
@@ -1042,7 +981,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <script src="./assets/js/main.js"></script>
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<script defer type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
