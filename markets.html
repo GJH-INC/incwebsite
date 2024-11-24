@@ -4,9 +4,8 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="AI-generated website">
-      <meta name="theme-color" content="#ffffff">
       
+            
       <!-- Performance optimization: Load critical CSS first -->
       <link rel="preload" href="https://cdn.tailwindcss.com" as="style">
       <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
@@ -52,10 +51,6 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
       
-      <!-- Icons - Load async -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
-            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
 
       <!-- Minimal Animation CSS -->
       <style>
@@ -106,128 +101,25 @@
         }
       </style>
 
-      <!-- Enhanced Image Handler -->
-      <script>
-        // Lazy loading and error handling for images
-        document.addEventListener('DOMContentLoaded', () => {
-          const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                  img.src = img.dataset.src;
-                  img.removeAttribute('data-src');
-                  observer.unobserve(img);
-                }
-              }
-            });
-          }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
-          });
 
-          const loadImage = (img) => {
-            if ('loading' in HTMLImageElement.prototype) {
-              img.loading = 'lazy';
-            }
-            
-            // Enhanced error handling
-            img.onerror = () => {
-              const width = img.getAttribute('width') || img.clientWidth || 300;
-              const height = img.getAttribute('height') || img.clientHeight || 200;
-              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
-              img.alt = 'Image unavailable';
-              img.classList.add('error-image');
-            };
-
-            if (img.dataset.src) {
-              imageObserver.observe(img);
-            }
-          };
-
-          // Process existing images
-          document.querySelectorAll('img[data-src]').forEach(loadImage);
-
-          // Watch for new images
-          new MutationObserver((mutations) => {
-            mutations.forEach(mutation => {
-              mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && node.tagName === 'IMG') {
-                  loadImage(node);
-                }
-                if (node.nodeType === 1) {
-                  node.querySelectorAll('img[data-src]').forEach(loadImage);
-                }
-              });
-            });
-          }).observe(document.body, {
-            childList: true,
-            subtree: true
-          });
-        });
-
-        // Performance monitoring
-        if ('performance' in window) {
-          window.addEventListener('load', () => {
-            const timing = performance.getEntriesByType('navigation')[0];
-            console.log(`Page load time: ${timing.loadEventEnd - timing.navigationStart}ms`);
-          });
-        }
-      </script>
      
-   </head>
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WRSZ5JBF');</script>
+<!-- End Google Tag Manager -->
+
+</head>
 <body >
-   <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            300: '#c4b5fd',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            700: '#6d28d9',
-                            800: '#5b21b6',
-                            900: '#4c1d95',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    backdropBlur: {
-                        xs: '2px',
-                    },
-                    animation: {
-                        'gradient': 'gradient 15s ease infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        gradient: {
-                            '0%, 100%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'left center'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'right center'
-                            },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                    },
-                },
-            },
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <div id="root" class="relative overflow-hidden">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRSZ5JBF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div  class="relative overflow-hidden">
         <!-- Background Elements -->
         <div class="fixed inset-0 -z-10">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-100/60 via-violet-100/60 to-white animate-gradient"></div>
@@ -305,7 +197,7 @@
         </div>
     </div>
 
-<div id="root" class=" py-24 bg-gradient-to-br from-blue-100/30 via-violet-100/30 to-white/80 backdrop-blur-sm">
+<div  class=" py-24 bg-gradient-to-br from-blue-100/30 via-violet-100/30 to-white/80 backdrop-blur-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Markets Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -431,7 +323,7 @@
     </div>
   </div>
 </div>
-<div id="root" class="py-24 bg-gradient-to-br from-blue-50 via-violet-50 to-white min-h-screen">
+<div  class="py-24 bg-gradient-to-br from-blue-50 via-violet-50 to-white min-h-screen">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- Content Section -->
@@ -611,7 +503,7 @@
     </div>
   </div>
 </div>
-<div id="root" class="py-24 bg-gradient-to-br from-blue-50 via-violet-50 to-white py-10">
+<div  class="py-24 bg-gradient-to-br from-blue-50 via-violet-50 to-white py-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative">
       <!-- Glassmorphic background blur effect -->
@@ -706,7 +598,7 @@
     </div>
   </div>
 </div>
-<div id="root" class=" py-24 bg-gradient-to-br from-blue-50 via-violet-50 to-white">
+<div  class=" py-24 bg-gradient-to-br from-blue-50 via-violet-50 to-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative">
       <!-- Glassmorphic blur effect background -->
@@ -819,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-<div id="root" class="relative py-10 bg-white overflow-hidden">
+<div  class="relative py-10 bg-white overflow-hidden">
   <!-- Modern Gradient Background with Animation -->
   <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-violet-50 to-white animate-gradient-slow pointer-events-none"></div>
   
