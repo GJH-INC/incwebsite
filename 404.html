@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capability Statement - GJH INC</title>
-      
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Page not found</title>
+            
       <!-- Performance optimization: Load critical CSS first -->
       <link rel="preload" href="https://cdn.tailwindcss.com" as="style">
       <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
@@ -41,6 +41,10 @@
         }
       </script>
 
+      <!-- Utilities and Components -->
+      <script defer src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script defer src="https://preline.co/assets/vendor/preline/dist/index.js"></script>
       
       <!-- Optimized Font Loading -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,19 +52,66 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
       
 
-<style>
-      .bg-gradient-custom {
+      <!-- Minimal Animation CSS -->
+      <style>
+        /* Core Animations */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+          from { transform: translateY(20px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Section Padding */
+        section {
+          padding: clamp(2rem, 5vw, 6.25rem) 0;
+          scroll-margin-top: 5rem;
+        }
+
+        /* Performance Optimizations */
+        img {
+          content-visibility: auto;
+          contain: content;
+        }
+
+        /* Core Layout Classes */
+        .container {
+          width: min(100% - 2rem, 75rem);
+          margin-inline: auto;
+        }
+
+        /* Responsive Typography */
+        :root {
+          --fluid-min-width: 320;
+          --fluid-max-width: 1140;
+          --fluid-min-size: 16;
+          --fluid-max-size: 18;
+          --fluid-min-scale: 1.2;
+          --fluid-max-scale: 1.333;
+        }
+
+        /* Add smooth scrolling only if user hasn't requested reduced motion */
+        @media (prefers-reduced-motion: no-preference) {
+          html {
+            scroll-behavior: smooth;
+          }
+        }
+      </style>
+    <style>
+        .bg-gradient-custom {
             background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(99,102,241,0.1) 100%);
         }
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
     </style>
-    
-<!-- Google Tag Manager -->
-<script defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -68,14 +119,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 </head>
-<body class=" from-blue-600/20 via-violet-600/20 to-purple-600/20 min-h-screen">
+<body class="bg-white min-h-screen">
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe loading="lazy" src="https://www.googletagmanager.com/ns.html?id=GTM-WRSZ5JBF"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRSZ5JBF"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- Navigation -->
+<!-- Navbar -->
 <header>
   <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/60 border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,18 +169,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </nav>
 </header>
-  <div class="pt-32 py-16 bg-gradient-custom">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center py-10">
-                <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
-                    Capability Statement
-                </h1>
-                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                    Your privacy is important to us. Learn how GJH INC collects, uses, and protects your personal information.
-                </p>
-            </div>
-        </div>
-    </div>
+
+
+
+
 <!-- Hero Section -->
 <div class="relative flex items-center justify-center py-20 px-4 sm:px-6 overflow-hidden">
     <!-- Background gradient circles -->
@@ -140,9 +183,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     
     <!-- Main Content -->
-    <div class="relative max-w-7xl mx-auto w-full glass-effect rounded-3xl shadow-2xl overflow-hidden">
-        <img src="./assets/images/CapabilityStatement.webp" alt="GJH INC Capability Statement" class="w-full  object-cover">
-    </div>
+            <div class="relative pt-32 pb-20 sm:pt-40 sm:pb-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary-400 to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                    <div class="relative bg-white/70 backdrop-blur-xl rounded-2xl p-8 sm:p-12 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#4338ca] leading-tight mb-6 bg-clip-text ">
+                            404 - Page Not Found
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-700 max-w-3xl mb-8">
+                            You might have followed a bad link or the page may have been moved.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="/" class="inline-flex items-center px-6 py-3 text-base font-medium rounded-full shadow-lg  bg-[#4338ca] text-white transition-all duration-300 hover:scale-105">
+                                Go to Home
+                            </a>
+                            <a href="./services.html" class="inline-flex items-center px-6 py-3 border border-white/50 text-base font-medium rounded-full shadow-lg text-gray-700 bg-white/50 backdrop-blur-sm hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-300 hover:scale-105">
+                                services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 
 <div  class="bg-gradient-to-br from-blue-100/90 via-violet-100/90 to-white">
@@ -249,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 </div>
-                    <script defer src="./assets/js/main.js"></script>
+                    <script src="./assets/js/main.js"></script>
 </body>
                     </html>
                 
