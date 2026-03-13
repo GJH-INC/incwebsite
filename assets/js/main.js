@@ -1,3 +1,16 @@
+// Newsletter form handler
+function handleNewsletter(e) {
+  e.preventDefault();
+  var email = document.getElementById('newsletter-email');
+  if (email && email.value) {
+    var btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Subscribed!';
+    btn.disabled = true;
+    btn.classList.add('opacity-75');
+    email.value = '';
+  }
+}
+
 // Mobile menu toggle
 document.getElementById('menu-button').addEventListener('click', function() {
   var menu = document.getElementById('mobile-menu');

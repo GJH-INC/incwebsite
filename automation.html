@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Automation & Integration Services | GJH INC</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GJH INC automates business workflows and integrates disparate systems to reduce manual effort, increase efficiency, and drive measurable ROI for government and commercial organizations.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gjh-inc.com/automation.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#4338CA', secondary: '#10B981', accent: '#8B5CF6' },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./assets/css/font.css">
+  <style>
+    section { padding: clamp(2rem, 5vw, 6.25rem) 0; scroll-margin-top: 5rem; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  </style>
+</head>
+<body class="antialiased leading-normal w-screen overflow-x-hidden">
+
+<!-- Navbar -->
+<header>
+  <nav class="fixed w-full z-50 backdrop-blur-lg bg-white/60 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="./" class="flex-shrink-0">
+          <img src="./assets/images/GJH-final.png" alt="GJH INC logo" width="174" height="50" />
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="./" class="text-gray-700 hover:text-primary transition">Home</a>
+          <a href="./about.html" class="text-gray-700 hover:text-primary transition">About</a>
+          <a href="./services.html" class="text-gray-700 hover:text-primary transition">Services</a>
+          <a href="./webdevelopment.html" class="text-gray-700 hover:text-primary transition">Web Development</a>
+          <a href="./markets.html" class="text-gray-700 hover:text-primary transition">Markets</a>
+          <a href="./#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition">Get Started</a>
+        </div>
+        <div class="md:hidden">
+          <button id="menu-button" aria-label="menu" class="text-gray-700 hover:text-primary focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t bg-white/70">
+        <a href="./" class="block text-gray-700 hover:text-primary py-2">Home</a>
+        <a href="./about.html" class="block text-gray-700 hover:text-primary py-2">About</a>
+        <a href="./services.html" class="block text-gray-700 hover:text-primary py-2">Services</a>
+        <a href="./#contact" class="block bg-primary text-white px-6 py-2 rounded-full w-fit mt-2">Get Started</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="min-h-screen bg-gradient-to-br from-violet-500/10 via-blue-500/10 to-violet-500/10">
+
+  <!-- Hero -->
+  <div class="relative pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">Automation & Integration</span>
+          <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Eliminate Repetitive Work. Accelerate Results.</h1>
+          <p class="text-lg text-gray-600 mb-8">GJH INC designs and deploys intelligent automation solutions that connect your systems, streamline your workflows, and free your team to focus on what matters most.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="./#contact" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition">
+              Schedule a Discovery Call
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="./services.html" class="inline-flex items-center px-8 py-3 rounded-full border border-gray-300 hover:border-primary hover:text-primary transition">All Services</a>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 flex items-center gap-4">
+            <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">Reduce Manual Hours</p>
+              <p class="text-sm text-gray-600">Automate repetitive tasks and free your team for strategic work</p>
+            </div>
+          </div>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 flex items-center gap-4">
+            <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">Connect Your Systems</p>
+              <p class="text-sm text-gray-600">Integrate siloed tools into a unified, seamless workflow</p>
+            </div>
+          </div>
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/20 flex items-center gap-4">
+            <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">Improve Accuracy</p>
+              <p class="text-sm text-gray-600">Eliminate human error from data entry and reporting processes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="py-20 bg-white/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What We Automate</h2>
+        <p class="text-gray-600">From simple task automation to complex multi-system integrations.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Reporting Automation</h3>
+          <p class="text-gray-600 text-sm">Automatically generate, format, and distribute reports on a schedule — eliminating hours of manual compilation each week.</p>
+        </div>
+        <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">CRM & ERP Integration</h3>
+          <p class="text-gray-600 text-sm">Connect Salesforce, HubSpot, SAP, or other platforms so data flows automatically between systems without manual re-entry.</p>
+        </div>
+        <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Email & Notification Workflows</h3>
+          <p class="text-gray-600 text-sm">Trigger intelligent email sequences, Slack alerts, or SMS notifications based on specific events or conditions in your systems.</p>
+        </div>
+        <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Make.com & Zapier Workflows</h3>
+          <p class="text-gray-600 text-sm">Build no-code and low-code automation workflows on Make.com and Zapier that connect hundreds of apps out of the box.</p>
+        </div>
+        <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Custom API Integrations</h3>
+          <p class="text-gray-600 text-sm">When off-the-shelf tools aren't enough, we build custom API integrations tailored precisely to your operational requirements.</p>
+        </div>
+        <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">AI-Powered Automation</h3>
+          <p class="text-gray-600 text-sm">Layer AI and machine learning on top of your automation workflows for intelligent decision-making and adaptive process optimization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="backdrop-blur-sm bg-white/60 rounded-2xl p-12 border border-white/20">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Automate?</h2>
+        <p class="text-gray-600 mb-8">Tell us about your most time-consuming manual processes. We'll identify the automation opportunities with the highest ROI.</p>
+        <a href="./#contact" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition">
+          Schedule a Discovery Call
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<div class="bg-gradient-to-br from-blue-100/90 via-violet-100/90 to-white">
+  <footer>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div><img src="./assets/images/GJH-final.png" alt="GJH INC" width="174" height="50" class="mb-4"/><p class="text-gray-600 text-sm">Strategic consulting, technology services, and managed services.</p></div>
+        <div><h3 class="font-semibold text-gray-900 mb-4">Services</h3><ul class="space-y-2 text-sm"><li><a href="./services.html" class="text-gray-600 hover:text-primary transition">Government Contracting</a></li><li><a href="./data-services.html" class="text-gray-600 hover:text-primary transition">Data Services</a></li><li><a href="./automation.html" class="text-gray-600 hover:text-primary transition">Automation</a></li><li><a href="./genai.html" class="text-gray-600 hover:text-primary transition">GenAI Solutions</a></li></ul></div>
+        <div><h3 class="font-semibold text-gray-900 mb-4">Contact</h3><ul class="space-y-2 text-sm text-gray-600"><li><a href="tel:+16504561744" class="hover:text-primary">(650) 456-1744</a></li><li><a href="mailto:info@gjh-inc.com" class="hover:text-primary">info@gjh-inc.com</a></li></ul></div>
+      </div>
+      <div class="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">© 2025 GJH INC. All rights reserved.</p>
+        <div class="flex space-x-6"><a href="./privacy.html" class="text-sm text-gray-500 hover:text-primary">Privacy Policy</a><a href="./terms.html" class="text-sm text-gray-500 hover:text-primary">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+</div>
+<script defer src="./assets/js/main.js"></script>
+</body>
+</html>
