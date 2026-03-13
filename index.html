@@ -77,6 +77,22 @@
           to { opacity: 1; }
         }
         
+        @keyframes partner-scroll {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .partners-ticker {
+          display: flex;
+          width: max-content;
+          animation: partner-scroll 32s linear infinite;
+        }
+        .partners-ticker:hover { animation-play-state: paused; }
+        /* Partners ticker utility overrides (not in compiled Tailwind) */
+        .text-secondary { color: #10B981; }
+        .text-accent    { color: #8B5CF6; }
+        .bg-secondary\/10 { background-color: rgb(16 185 129 / 0.1); }
+        .bg-accent\/10    { background-color: rgb(139 92 246 / 0.1); }
+        .partners-ticker.gap-6 { gap: 1.5rem; }
         @keyframes slideUp {
           from { transform: translateY(20px); opacity: 0; }
           to { transform: translateY(0); opacity: 1; }
@@ -615,88 +631,121 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="text-lg text-gray-600">Collaborating with industry leaders to deliver exceptional solutions</p>
     </div>
 
-    <!-- Partners Grid -->
-    <div class="grid lg:grid-cols-3 gap-8 mb-20">
-      <!-- Technology Partners -->
-      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">Technology Partners</h3>
-          <div class="space-y-6">
-            <div class="flex items-center gap-4">
-              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
-                <span class="text-xl font-bold text-primary">WP</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">WP Engine</h4>
-                <p class="text-sm text-gray-600">Premium WordPress Hosting</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
-                <span class="text-xl font-bold text-primary">SF</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">Snowflake</h4>
-                <p class="text-sm text-gray-600">Data Cloud Platform</p>
-              </div>
-            </div>
+    <!-- Partners Ticker -->
+    <div class="relative overflow-hidden mb-20 py-2">
+      <!-- Fade edges -->
+      <div class="absolute left-0 top-0 bottom-0 w-28 bg-gradient-to-r from-violet-50/80 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-28 bg-gradient-to-l from-violet-50/80 to-transparent z-10 pointer-events-none"></div>
+
+      <div class="partners-ticker gap-6">
+        <!-- Set 1 -->
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-primary tracking-tight">WP</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">WP Engine</p>
+            <p class="text-xs text-gray-500 mt-0.5">WordPress Hosting</p>
           </div>
         </div>
-      </div>
-
-      <!-- Marketing Partners -->
-      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">Marketing Partners</h3>
-          <div class="space-y-6">
-            <div class="flex items-center gap-4">
-              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
-                <span class="text-xl font-bold text-primary">MC</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">MailChimp</h4>
-                <p class="text-sm text-gray-600">Email Marketing Platform</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
-                <span class="text-xl font-bold text-primary">TT</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">Tawk.to</h4>
-                <p class="text-sm text-gray-600">Customer Engagement</p>
-              </div>
-            </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-secondary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-secondary tracking-tight">SF</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Snowflake</p>
+            <p class="text-xs text-gray-500 mt-0.5">Data Cloud Platform</p>
           </div>
         </div>
-      </div>
-
-      <!-- Data Partners -->
-      <div class="group relative backdrop-blur-sm bg-white/60 rounded-2xl p-8 border border-white/20 hover:border-primary/20 transition-all duration-300">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-violet-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">Data Partners</h3>
-          <div class="space-y-6">
-            <div class="flex items-center gap-4">
-              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
-                <span class="text-xl font-bold text-primary">DB</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">DATA BRICKS</h4>
-                <p class="text-sm text-gray-600">Data Analytics Solutions</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="size-12 bg-white/80 rounded-lg flex items-center justify-center">
-                <span class="text-xl font-bold text-primary">MK</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900">Make.com</h4>
-                <p class="text-sm text-gray-600">Workflow Automation</p>
-              </div>
-            </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-accent tracking-tight">MC</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">MailChimp</p>
+            <p class="text-xs text-gray-500 mt-0.5">Email Marketing</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-primary tracking-tight">TT</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Tawk.to</p>
+            <p class="text-xs text-gray-500 mt-0.5">Customer Engagement</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-secondary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-secondary tracking-tight">DB</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Databricks</p>
+            <p class="text-xs text-gray-500 mt-0.5">Data Analytics</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-accent tracking-tight">MK</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Make.com</p>
+            <p class="text-xs text-gray-500 mt-0.5">Workflow Automation</p>
+          </div>
+        </div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-primary tracking-tight">WP</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">WP Engine</p>
+            <p class="text-xs text-gray-500 mt-0.5">WordPress Hosting</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-secondary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-secondary tracking-tight">SF</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Snowflake</p>
+            <p class="text-xs text-gray-500 mt-0.5">Data Cloud Platform</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-accent tracking-tight">MC</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">MailChimp</p>
+            <p class="text-xs text-gray-500 mt-0.5">Email Marketing</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-primary tracking-tight">TT</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Tawk.to</p>
+            <p class="text-xs text-gray-500 mt-0.5">Customer Engagement</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-secondary/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-secondary tracking-tight">DB</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Databricks</p>
+            <p class="text-xs text-gray-500 mt-0.5">Data Analytics</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 backdrop-blur-sm bg-white/70 rounded-2xl px-7 py-5 border border-white/30 shadow-sm shrink-0 min-w-[220px]">
+          <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+            <span class="text-base font-extrabold text-accent tracking-tight">MK</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm leading-tight">Make.com</p>
+            <p class="text-xs text-gray-500 mt-0.5">Workflow Automation</p>
           </div>
         </div>
       </div>
