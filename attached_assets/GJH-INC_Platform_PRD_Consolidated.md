@@ -1,6 +1,6 @@
 # GJH-INC.COM — AI-Powered Business Development Platform
 ## Consolidated Product Requirements Document
-**Version:** 1.0 (Consolidated & Enhanced)
+**Version:** 1.1 (Partner Ecosystem Intelligence Added)
 **Prepared:** March 2026
 **Domain:** gjh-inc.com
 **Company:** GJH INC — Strategic Consulting, Technology Services, Managed Services
@@ -19,7 +19,7 @@ The three source documents (Replit Agent Prompt, PRD.docx, Requirements PDF) wer
 | 2 | Scheduling tool: "Cal.com or Calendly" listed inconsistently | **Standardize on Cal.com** — open source, self-hostable, no vendor lock-in |
 | 3 | Email service: "SendGrid or Resend" listed inconsistently | **Standardize on Resend** — modern API, better developer experience, generous free tier |
 | 4 | Analytics: "Plausible or PostHog" listed inconsistently | **Standardize on Plausible** — simpler, GDPR-compliant, no cookie banner required |
-| 5 | Partners section: Current site has 17-logo animated carousel; docs say 6–8 badge grid | **Follow PRD spec: 6–8 logos in static badge grid** — rebuild required for this section |
+| 5 | Partners section: Current site has 17-logo animated carousel; docs say 6–8 badge grid | **Revised decision: all 17 partners are retained and expanded** — each partner now has a dedicated profile page, service offering, and AI-powered routing capability. About page shows a clean 6–8 featured badge grid. Full partner catalog lives at `/partners`. |
 | 6 | Terms page incorrectly references `info@gjhconsulting.net` | **Use `info@gjh-inc.com` everywhere, no exceptions** |
 | 7 | Product pricing listed as "Fixed fee" with no amounts | **Gap — actual prices must be confirmed by GJH INC** before launch |
 | 8 | Team bios listed as About page requirement | **Content gap — team content must be supplied by client** |
@@ -83,7 +83,7 @@ The platform's strategic purpose is dual: it functions as an active business dev
 
 ---
 
-## SECTION 4: FIVE AI AGENTS
+## SECTION 4: AI AGENTS (7 TOTAL)
 
 ### Agent 1 — Content Strategist
 
@@ -233,6 +233,10 @@ All agents share a PostgreSQL-backed event table (`agent_events`). Events are wr
 | `content_published` | Agent 1 (on admin approve) | Agent 4, Agent 3 | Agent 4: update sitemap. Agent 3: queue for newsletter |
 | `seo_alert` | Agent 4 | Admin dashboard | Display alert card in SEO Health section |
 | `order_completed` | Agent 5 (Stripe webhook) | Agent 3 | Send confirmation + onboarding sequence |
+| `partner_intent_detected` | Agent 7 (via Agent 2) | Agent 7 | Route visitor to partner solution or GJH delivery |
+| `partner_referral_clicked` | Agent 7 | Admin dashboard | Log referral, attribute to lead if known |
+| `partner_solution_requested` | Agent 7, Contact Form | Agent 3, Agent 7 | Trigger partner-specific follow-up + notify partner if applicable |
+| `partner_content_needed` | Agent 7 | Agent 1 | Generate partner co-marketing article or case study draft |
 
 **Safety rules:**
 - Events have a `processed` boolean flag — subscribers mark events processed after handling
@@ -265,6 +269,8 @@ All agents share a PostgreSQL-backed event table (`agent_events`). Events are wr
 | `/capability-statement` | Capability Statement | Interactive web version (NAICS codes, certifications, past performance) + downloadable PDF |
 | `/contact` | Contact | Short form (name, email, org, message), phone, email, map, Cal.com scheduling embed |
 | `/careers` | Careers | Open positions listing |
+| `/partners` | Partner Ecosystem | All 17 partner profiles in a searchable, filterable catalog — each card shows partner name, service domain, what GJH delivers with that partner, and dual CTAs: "Work with us" and "Visit Partner Portal" |
+| `/partners/[slug]` | Partner Detail | Dedicated page per partner — full service description, GJH value-add, past engagement examples, relevant case studies, "Request a Solution" form, and direct partner portal link |
 | `/privacy` | Privacy Policy | Contact: `info@gjh-inc.com` |
 | `/terms` | Terms of Service | Contact: `info@gjh-inc.com` (NOT gjhconsulting.net — this is a critical fix) |
 
@@ -279,6 +285,7 @@ All agents share a PostgreSQL-backed event table (`agent_events`). Events are wr
 | `/admin/products` | Products & Orders | Product catalog CRUD, order list, revenue chart |
 | `/admin/chatbot` | Chatbot Config | Knowledge base editor, conversation review, FAQ analytics |
 | `/admin/agents` | Agent Activity Log | Real-time feed of all agent actions with timestamps and status |
+| `/admin/partners` | Partner Manager | Partner catalog CRUD — add/edit/remove partners, manage portal links, view referral click and conversion data, configure per-partner routing rules |
 
 ---
 
@@ -405,6 +412,50 @@ seo_reports (
   id UUID PRIMARY KEY,
   report_type TEXT,
   data JSONB,
+  created_at TIMESTAMPTZ DEFAULT now()
+)
+
+-- Partner registry and routing rules
+partners (
+  id UUID PRIMARY KEY,
+  name TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  logo_path TEXT,
+  category TEXT,
+  service_domains JSONB,
+  gjh_value_add TEXT,
+  portal_url TEXT NOT NULL,
+  referral_url TEXT,
+  affiliate_id TEXT,
+  contact_email TEXT,
+  active BOOLEAN DEFAULT true,
+  featured BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT now()
+)
+
+-- Track partner portal referral clicks and conversions
+partner_referrals (
+  id UUID PRIMARY KEY,
+  partner_id UUID REFERENCES partners(id),
+  visitor_id TEXT,
+  lead_id UUID REFERENCES leads(id),
+  clicked_at TIMESTAMPTZ DEFAULT now(),
+  converted BOOLEAN DEFAULT false,
+  converted_at TIMESTAMPTZ,
+  revenue_attributed NUMERIC(10,2),
+  notes TEXT
+)
+
+-- Intent signals detected by chatbot/agent mapped to partner products
+partner_intent_events (
+  id UUID PRIMARY KEY,
+  visitor_id TEXT,
+  lead_id UUID REFERENCES leads(id),
+  detected_need TEXT,
+  matched_partner_id UUID REFERENCES partners(id),
+  matched_service TEXT,
+  confidence_score NUMERIC(4,3),
+  action_taken TEXT,
   created_at TIMESTAMPTZ DEFAULT now()
 )
 
@@ -591,5 +642,276 @@ These items require GJH INC to provide information before the platform can be fu
 
 ---
 
+## SECTION 15: PARTNER ECOSYSTEM INTELLIGENCE ENGINE
+
+### Strategic Purpose
+
+Every partner relationship GJH INC holds is a potential revenue avenue. When a visitor, prospect, or client needs something that a partner technology delivers, the platform should:
+
+1. **Detect the need** — intelligently identify the partner-relevant intent
+2. **Qualify the fit** — determine whether GJH delivers it directly, jointly with the partner, or via a referral
+3. **Route it correctly** — sell the GJH-delivered engagement, or redirect to the partner portal with tracked attribution
+4. **Follow up autonomously** — trigger the right nurture sequence without human intervention
+5. **Track the revenue** — attribute referral commissions, co-sell credits, and pipeline value back to each partner relationship
+
+The result: every partner badge on the site is an active, AI-powered revenue node — not just a logo.
+
+---
+
+### Partner Catalog — All 17 Partners (Categorized)
+
+**Data & AI (GJH Core Differentiators)**
+
+| Partner | Service Domain | GJH Delivery Mode | Revenue Mechanism |
+|---------|---------------|-------------------|-------------------|
+| Databricks | Data engineering, lakehouse architecture, AI/ML pipelines | GJH implements and manages Databricks environments for clients — especially federal data modernization | Professional services revenue + Databricks partner referral |
+| Snowflake | Cloud data warehouse, data sharing, Cortex AI | GJH architects and migrates clients to Snowflake — data governance, pipeline design | Professional services + Snowflake partner credits |
+| Sigma Computing | Business intelligence, collaborative analytics on cloud data | GJH deploys Sigma on top of Snowflake/Databricks for federal dashboards and reporting | Professional services + Sigma referral |
+| NVIDIA | GPU infrastructure, AI acceleration, CUDA-based ML | GJH recommends and integrates NVIDIA infrastructure for AI/GenAI deployments | Referral to NVIDIA partner portal for hardware/cloud |
+
+**Cloud & Infrastructure**
+
+| Partner | Service Domain | GJH Delivery Mode | Revenue Mechanism |
+|---------|---------------|-------------------|-------------------|
+| AWS | Cloud infrastructure, migration, security, managed services | GJH delivers AWS cloud migrations, Well-Architected reviews, and managed cloud operations | AWS Partner Network referral + professional services |
+| Microsoft | Azure, Microsoft 365, Teams, Power Platform, Copilot | GJH deploys Azure AI, M365 governance, and Power Platform automations for government/commercial clients | Microsoft Partner Network referral + services |
+| Google | Google Cloud Platform, Google Workspace, Gemini AI | GJH implements GCP data stacks and Workspace deployments | Google Cloud Partner referral + services |
+
+**Business Operations**
+
+| Partner | Service Domain | GJH Delivery Mode | Revenue Mechanism |
+|---------|---------------|-------------------|-------------------|
+| Salesforce | CRM, Sales Cloud, Government Cloud | GJH configures and customizes Salesforce for government contractors and commercial clients | Salesforce Partner referral + implementation services |
+| Zoho | CRM, HR, Finance, Marketing automation — small-mid business | GJH recommends and implements Zoho suite for SMB clients who need integrated business operations | Zoho Partner referral + setup services |
+| Apollo | Sales intelligence, prospect enrichment, outbound sequencing | GJH uses Apollo internally AND recommends it to clients building outbound sales capabilities | Apollo affiliate referral |
+| MailChimp | Email marketing, audience management | GJH implements MailChimp for clients needing marketing automation at accessible price points | Referral to MailChimp + setup services |
+
+**Automation & Workflow**
+
+| Partner | Service Domain | GJH Delivery Mode | Revenue Mechanism |
+|---------|---------------|-------------------|-------------------|
+| Make.com | No-code/low-code process automation, workflow integration | GJH builds Make.com automations for clients — connecting CRMs, ERPs, and data sources | Make.com Partner referral + automation delivery services |
+
+**E-Commerce & Web**
+
+| Partner | Service Domain | GJH Delivery Mode | Revenue Mechanism |
+|---------|---------------|-------------------|-------------------|
+| Shopify | E-commerce platform, storefront development | GJH builds Shopify stores for government suppliers and commercial clients | Shopify Partner referral + development services |
+| WP Engine | WordPress managed hosting, enterprise web performance | GJH recommends WP Engine for clients who need managed WordPress hosting | WP Engine affiliate + hosting setup |
+| GoDaddy | Domain registration, DNS management, basic hosting | GJH manages domain portfolio and DNS for clients through GoDaddy | GoDaddy affiliate + domain management services |
+
+**Communications & Support**
+
+| Partner | Service Domain | GJH Delivery Mode | Revenue Mechanism |
+|---------|---------------|-------------------|-------------------|
+| Zoom | Video conferencing, Zoom Phone, Zoom AI Companion | GJH deploys and manages Zoom for organizations transitioning from legacy conferencing | Zoom Partner referral + deployment services |
+| Tawk.to | Live chat, customer support widget | GJH implements Tawk.to for clients who need real-time website visitor engagement | Referral + implementation |
+
+---
+
+### Agent 7 — Partner Ecosystem Engine
+
+**Purpose:** The intelligence layer that monitors every visitor interaction, detects partner-relevant needs in real time, routes them to the correct delivery model (GJH-direct, co-sell, or partner referral), tracks every attribution point, and generates partner-specific content and proposals — autonomously, 24/7.
+
+**This is not a passive directory. Every partner relationship is an active revenue system.**
+
+---
+
+#### 7.1 Partner Intent Detection
+
+Agent 7 works alongside Agent 2 (chatbot) by monitoring conversation context in real time for signals that map to partner products or services.
+
+**Detection triggers (examples):**
+
+| Visitor Signal | Detected Need | Matched Partner(s) | Action |
+|---------------|---------------|-------------------|--------|
+| "We need to move our data warehouse to the cloud" | Cloud data warehouse migration | Snowflake, Databricks, AWS | Offer GJH-delivered migration + partner tool recommendation |
+| "We need a CRM for our contracting team" | CRM for government contractor | Salesforce, Zoho | Ask budget/scale → route to appropriate partner + GJH setup |
+| "Can you automate our procurement workflows?" | Process automation | Make.com, Microsoft Power Platform | Offer GJH automation services using Make.com or Power Platform |
+| "We need a new website for our 8(a) firm" | Web development | Shopify (e-commerce) or WP Engine (content) | GJH web development service + hosting recommendation |
+| "We're evaluating AI infrastructure for our agency" | AI/GPU infrastructure | NVIDIA, AWS, Google Cloud | GJH AI Readiness Audit product + infrastructure partner referral |
+| "We need help with email outreach to contracting officers" | Outbound sales + email | Apollo, MailChimp | GJH BD strategy + Apollo/MailChimp implementation |
+
+**Detection mechanism:**
+- Agent 2 passes conversation context to Agent 7 at each message exchange
+- Agent 7 uses Claude API to classify intent against the partner service catalog
+- Confidence threshold required before action (configurable, default: 0.75)
+- Low-confidence signals are logged but do not trigger automatic routing
+
+---
+
+#### 7.2 Routing Decision Logic
+
+Once partner intent is detected, Agent 7 applies a three-path routing decision:
+
+```
+IF GJH can deliver the service directly using the partner tool:
+  → Surface GJH service offering (e.g., "We implement Databricks for federal agencies")
+  → Capture as lead → Agent 3 triggers relevant nurture sequence
+  → CTA: "Request a Proposal"
+
+ELSE IF GJH delivers jointly (co-sell) with the partner:
+  → Surface GJH-led engagement mentioning the partner
+  → Capture as lead → flag for sales follow-up
+  → CTA: "Schedule a Consultation"
+
+ELSE (pure referral — partner delivers directly):
+  → Surface partner product recommendation with GJH context
+  → Log referral intent
+  → CTA: "Visit [Partner] Portal" → tracked referral link
+  → If visitor provides email: capture as lead → route to warm nurture
+```
+
+**Admin can configure per-partner routing rules** in the `/admin/partners` dashboard — setting whether each partner is "GJH Delivery," "Co-Sell," or "Referral Only."
+
+---
+
+#### 7.3 Partner-Specific Nurture Sequences (Agent 3 Integration)
+
+When a partner solution is requested, Agent 3 triggers a partner-contextual email sequence:
+
+| Tier | Email 1 (Immediate) | Email 2 (Day 3) | Email 3 (Day 7) |
+|------|---------------------|-----------------|-----------------|
+| GJH Delivery | "Here's how GJH implements [Partner] for organizations like yours" + capability statement | Case study relevant to their need | Schedule consultation CTA |
+| Co-Sell | Introduction to GJH + partner combined solution | Partner tool overview with GJH's role | Proposal offer |
+| Referral | "We recommend [Partner] for this need — here's why and how to get started" | Optional: "GJH can help you implement it" | Light CTA |
+
+---
+
+#### 7.4 Partner Pages — Public-Facing
+
+**`/partners` — Partner Ecosystem Page**
+- Filterable grid of all 17 partner cards
+- Filter categories: Data & AI, Cloud, Business Operations, Automation, Web, Communications
+- Each card: logo, partner name, one-line GJH value statement, service tags, "Learn More" and "Work With Us" CTAs
+- Search bar for partner name or service type
+- Intro section: "GJH INC works with industry-leading technology partners to deliver end-to-end solutions. Whether you need implementation, integration, or a direct path to a partner portal — we connect you with the right solution."
+
+**`/partners/[slug]` — Individual Partner Page**
+Each partner gets a dedicated landing page containing:
+1. Partner logo + name + GJH certification/tier badge (if applicable)
+2. Service domain overview — what this partner's technology does
+3. GJH's role — how GJH delivers value using or alongside this partner
+4. What clients typically need (2–3 use cases)
+5. Relevant GJH case studies (dynamically linked from `case_studies` table)
+6. Relevant GJH products (dynamically linked — e.g., CMMC Assessment links to Microsoft/AWS)
+7. Dual CTA section:
+   - Primary: "Work with GJH on [Partner] Solutions" → lead capture form
+   - Secondary: "Visit the [Partner] Portal" → tracked referral link
+8. Related blog articles (Agent 1 generates partner co-marketing content)
+
+---
+
+#### 7.5 Partner Content Engine (Agent 1 Integration)
+
+Agent 7 emits `partner_content_needed` events to Agent 1 when:
+- A partner page has no associated blog articles (detected on first crawl)
+- A partner product line has a significant search volume but no GJH content exists
+- A new partner is added to the catalog
+
+Agent 1 generates co-marketing content drafts such as:
+- "How Federal Agencies Are Using Databricks for Data Modernization"
+- "Snowflake vs Traditional Data Warehouse: A GovCon Perspective"
+- "Implementing Salesforce Government Cloud for 8(a) Firms"
+- "Make.com Automations That Save 10 Hours Per Week for Contractors"
+
+All drafts go to the admin content queue — human approval required before publishing.
+
+---
+
+#### 7.6 Referral Attribution & Revenue Tracking
+
+**Every partner portal redirect is tracked:**
+- Unique referral link per partner (with UTM parameters or partner affiliate code)
+- Click logged to `partner_referrals` table with visitor ID and lead ID (if known)
+- Conversion tracking where partner programs allow (Snowflake, AWS, Salesforce, Shopify all have trackable partner programs)
+- Admin `/admin/partners` dashboard shows:
+  - Clicks per partner (weekly/monthly)
+  - Conversions (where trackable)
+  - Estimated referral revenue attributed
+  - Lead-to-referral conversion rate
+
+**Partner revenue streams:**
+1. **Professional services** — GJH delivers implementation using partner tools (primary)
+2. **Partner referral credits** — AWS, Microsoft, Snowflake, Salesforce, Shopify pay referral fees
+3. **Affiliate commissions** — GoDaddy, WP Engine, Apollo, MailChimp have affiliate programs
+4. **Co-sell pipeline** — Microsoft, AWS, Salesforce have formal co-sell programs where GJH can register opportunities
+
+---
+
+#### 7.7 Partner Knowledge Base (Agent 2 Integration)
+
+The chatbot's knowledge base is extended with partner intelligence:
+
+```
+For each partner:
+  - What the partner technology does (1-paragraph summary)
+  - What GJH delivers using this technology
+  - Typical client profile for this partner solution
+  - Starting price range or engagement model
+  - Partner portal URL
+  - Key differentiator vs. alternatives
+```
+
+The chatbot can therefore answer questions like:
+- *"Do you work with Snowflake?"* → "Yes — we architect and migrate data environments to Snowflake, particularly for federal agencies and data-intensive commercial clients. Would you like to tell me about your data environment?"
+- *"We need a CRM — what do you recommend?"* → Qualification flow → recommend Salesforce vs. Zoho based on budget/scale → offer GJH implementation
+- *"We're looking at Databricks vs Snowflake"* → "That's a common decision point we help clients navigate — can I ask about your workload type?"
+
+---
+
+#### 7.8 Partner Admin Dashboard (`/admin/partners`)
+
+Full management interface for the partner ecosystem:
+
+| Section | Contents |
+|---------|----------|
+| Partner Catalog | List of all 17 partners — edit name, logo, portal URL, referral URL, affiliate ID, routing mode (GJH delivery / co-sell / referral), active status, featured status |
+| Referral Analytics | Clicks per partner, conversions, revenue attributed, top-performing partners |
+| Intent Signal Feed | Recent partner intent detections from chatbot — visitor need, matched partner, confidence score, action taken |
+| Content Status | Which partners have associated blog articles, which need content (triggers Agent 1) |
+| Partner Routing Rules | Configure per-partner: delivery mode, escalation path, chatbot response template |
+
+---
+
+### Summary: Partner Ecosystem Revenue Model
+
+```
+Visitor arrives on gjh-inc.com
+        ↓
+Agent 2 (chatbot) engages — detects partner-relevant need
+        ↓
+Agent 7 classifies need against partner catalog
+        ↓
+    ┌───────────────────────────────────────────────────┐
+    │  GJH delivers?     Co-sell?      Pure referral?   │
+    │       ↓               ↓               ↓           │
+    │  Lead capture    Lead capture    Track click      │
+    │  + Proposal CTA  + Consult CTA   + Warm nurture  │
+    └───────────────────────────────────────────────────┘
+        ↓
+Agent 3 sends partner-contextual nurture sequence
+        ↓
+Agent 1 maintains partner co-marketing content pipeline
+        ↓
+Admin dashboard tracks referral revenue per partner
+```
+
+**Every partner relationship becomes a 24/7 revenue channel — whether GJH is delivering the service, co-selling with the partner, or earning a referral commission.**
+
+---
+
+### Open Items — Partner Ecosystem (Needs Client Input)
+
+| # | Item | Required From |
+|---|------|--------------|
+| 1 | Partner portal URLs and affiliate/referral IDs for each of the 17 partners | GJH INC to confirm which programs are active |
+| 2 | GJH's certification tier with each partner (e.g., AWS Tier, Microsoft Gold/Silver) | GJH INC |
+| 3 | Which partners are currently driving active client work vs. aspirational | GJH INC |
+| 4 | Co-sell program enrollment with Microsoft, AWS, Salesforce | GJH INC to enroll if not already done |
+| 5 | Partner contacts — named contacts at each partner for co-sell and referral coordination | GJH INC |
+
+---
+
 *Document consolidates: GJH-INC_Replit_Agent_Prompt.md, GJH-INC_AI_Website_PRD.docx, GJH-INC_Replit_Requirements.pdf*
-*All three source documents are consistent on core architecture. Conflicts resolved as noted in Section 0.*
+*Version 1.1 adds: Partner Ecosystem Intelligence Engine (Section 15, Agent 7, 3 new database tables, partner routes, partner admin section, partner events on event bus)*

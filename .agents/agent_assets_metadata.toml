@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "c7RSm-J0UfjiFU3O_Bqen"
+uri = "file://attached_assets/GJH-INC_Platform_PRD_Consolidated.md"
+type = "text"
+title = "GJH-INC Platform PRD v1.1 — Consolidated & Enhanced"
