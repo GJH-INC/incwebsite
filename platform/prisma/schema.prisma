@@ -1,0 +1,243 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  role          String    @default("user")
+  organization  String?
+  jobTitle      String?
+  phone         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  orders        Order[]
+  leads         Lead[]
+  conversations ChatConversation[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  category    String
+  description String
+  shortDesc   String
+  icon        String?
+  benefits    Json
+  process     Json
+  active      Boolean  @default(true)
+  featured    Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products    Product[]
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  description   String
+  shortDesc     String
+  includes      Json
+  deliveryTime  String
+  price         Int
+  currency      String   @default("USD")
+  stripePriceId String?
+  serviceId     String?
+  active        Boolean  @default(true)
+  featured      Boolean  @default(false)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  service  Service?  @relation(fields: [serviceId], references: [id])
+  orders   Order[]
+}
+
+model Order {
+  id              String   @id @default(cuid())
+  userId          String?
+  productId       String
+  customerName    String
+  customerEmail   String
+  customerOrg     String?
+  stripeSessionId String?  @unique
+  status          String   @default("pending")
+  amount          Int
+  currency        String   @default("USD")
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user    User?   @relation(fields: [userId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
+
+model Lead {
+  id           String   @id @default(cuid())
+  userId       String?
+  name         String
+  email        String
+  organization String?
+  role         String?
+  phone        String?
+  message      String?
+  source       String?
+  tier         String   @default("cold")
+  status       String   @default("new")
+  pagesViewed  Json?
+  topics       Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user          User?             @relation(fields: [userId], references: [id])
+  conversations ChatConversation[]
+}
+
+model ChatConversation {
+  id        String   @id @default(cuid())
+  userId    String?
+  leadId    String?
+  pageUrl   String?
+  messages  Json
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+  lead Lead? @relation(fields: [leadId], references: [id])
+}
+
+model Partner {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  name         String
+  logoPath     String?
+  category     String
+  description  String
+  gjhValueAdd  String
+  serviceTags  Json
+  portalUrl    String
+  referralUrl  String?
+  affiliateId  String?
+  featured     Boolean  @default(false)
+  active       Boolean  @default(true)
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  referrals PartnerReferral[]
+}
+
+model PartnerReferral {
+  id          String    @id @default(cuid())
+  partnerId   String
+  visitorId   String?
+  leadId      String?
+  clickedAt   DateTime  @default(now())
+  converted   Boolean   @default(false)
+  convertedAt DateTime?
+  revenue     Float?
+
+  partner Partner @relation(fields: [partnerId], references: [id])
+}
+
+model BlogPost {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  title           String
+  content         String?
+  excerpt         String?
+  topicTag        String?
+  seoTitle        String?
+  seoDescription  String?
+  ogImage         String?
+  schemaJson      Json?
+  linkedinSnippet String?
+  status          String    @default("draft")
+  author          String    @default("GJH INC")
+  publishedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model CaseStudy {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  industry    String?
+  client      String?
+  problem     String?
+  solution    String?
+  results     Json?
+  metrics     Json?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AgentEvent {
+  id           String   @id @default(cuid())
+  eventType    String
+  emitterAgent String
+  payload      Json?
+  processed    Boolean  @default(false)
+  retryCount   Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
