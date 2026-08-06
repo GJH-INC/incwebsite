@@ -67,7 +67,7 @@ The site deploys via Cloudflare for DNS/CDN/SSL. Replit handles the application,
 
 13. **Careers (`/careers`)** — Open positions listing.
 
-14. **Privacy Policy (`/privacy`)** and **Terms (`/terms`)** — Standard legal pages. Contact email: info@gjh-inc.com (NOT gjhconsulting.net).
+14. **Privacy Policy (`/privacy`)** and **Terms (`/terms`)** — Standard legal pages. Contact email: consult@gjh-inc.com (NOT gjhconsulting.net).
 
 ### Protected Admin Pages
 
@@ -185,7 +185,7 @@ ANTHROPIC_API_KEY=<Claude API key>
 STRIPE_SECRET_KEY=<Stripe secret>
 STRIPE_PUBLISHABLE_KEY=<Stripe publishable>
 RESEND_API_KEY=<email service key>
-ADMIN_EMAIL=info@gjh-inc.com
+ADMIN_EMAIL=consult@gjh-inc.com
 SITE_URL=https://gjh-inc.com
 ```
 
@@ -212,7 +212,7 @@ After Tracks 1-5 are stable:
 ## CRITICAL NOTES
 
 1. **Human-in-the-loop:** No AI-generated content publishes without admin approval. All drafts go to queue.
-2. **Contact email:** Use info@gjh-inc.com everywhere (current terms.html incorrectly references info@gjhconsulting.net)
+2. **Contact email:** Use consult@gjh-inc.com everywhere (current terms.html incorrectly references info@gjhconsulting.net)
 3. **No broken links:** Every nav item and service card must link to a real, dedicated page. The current site has multiple links pointing to `#` or `/services` — this must not happen.
 4. **Performance:** Target 90+ Google PageSpeed score. Lazy load images. Optimize all assets.
 5. **SEO:** Every page needs unique title tag, meta description, canonical URL, Open Graph tags. Blog posts need Schema.org Article markup.

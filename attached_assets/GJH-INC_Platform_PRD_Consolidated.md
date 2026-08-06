@@ -20,7 +20,7 @@ The three source documents (Replit Agent Prompt, PRD.docx, Requirements PDF) wer
 | 3 | Email service: "SendGrid or Resend" listed inconsistently | **Standardize on Resend** — modern API, better developer experience, generous free tier |
 | 4 | Analytics: "Plausible or PostHog" listed inconsistently | **Standardize on Plausible** — simpler, GDPR-compliant, no cookie banner required |
 | 5 | Partners section: Current site has 17-logo animated carousel; docs say 6–8 badge grid | **Revised decision: all 17 partners are retained and expanded** — each partner now has a dedicated profile page, service offering, and AI-powered routing capability. About page shows a clean 6–8 featured badge grid. Full partner catalog lives at `/partners`. |
-| 6 | Terms page incorrectly references `info@gjhconsulting.net` | **Use `info@gjh-inc.com` everywhere, no exceptions** |
+| 6 | Terms page incorrectly references `info@gjhconsulting.net` | **Use `consult@gjh-inc.com` everywhere, no exceptions** |
 | 7 | Product pricing listed as "Fixed fee" with no amounts | **Gap — actual prices must be confirmed by GJH INC** before launch |
 | 8 | Team bios listed as About page requirement | **Content gap — team content must be supplied by client** |
 | 9 | Apollo integration mentioned but no API or workflow details | **Treat as Wave 3 / optional** until Apollo account and API key are confirmed |
@@ -39,7 +39,7 @@ The following improvements have already been made to the static HTML site and sh
 - All emoji icons replaced with SVGs in `services.html`
 - Broken `href="#"` links fixed across `services.html` and `index.html`
 - `sitemap.xml` updated with all current pages
-- Contact email corrected to `info@gjh-inc.com`
+- Contact email corrected to `consult@gjh-inc.com`
 
 **Still required (target of this PRD):**
 - Full platform rebuild in Next.js
@@ -139,7 +139,7 @@ The platform's strategic purpose is dual: it functions as an active business dev
 7. Tier assignment: Hot (budget + timeline confirmed) / Warm (interest confirmed) / Cold (browsing)
 
 **Escalation rules:**
-- Hot lead → immediate email to `info@gjh-inc.com`
+- Hot lead → immediate email to `consult@gjh-inc.com`
 - Question outside knowledge base → "Let me connect you with a team member" + email alert
 - Hallucination guard: RAG-only responses from verified knowledge base documents
 
@@ -227,7 +227,7 @@ All agents share a PostgreSQL-backed event table (`agent_events`). Events are wr
 | Event | Emitter | Subscriber(s) | Action Triggered |
 |-------|---------|---------------|-----------------|
 | `lead_captured` | Agent 2, Contact Form | Agent 3 | Begin email sequence for lead tier |
-| `high_value_lead` | Agent 2 | Admin email | Immediate notification to `info@gjh-inc.com` |
+| `high_value_lead` | Agent 2 | Admin email | Immediate notification to `consult@gjh-inc.com` |
 | `product_inquiry` | Agent 5 | Agent 3 | Product-specific follow-up sequence |
 | `content_brief_needed` | Agent 4 | Agent 1 | Generate blog draft for keyword gap |
 | `content_published` | Agent 1 (on admin approve) | Agent 4, Agent 3 | Agent 4: update sitemap. Agent 3: queue for newsletter |
@@ -271,8 +271,8 @@ All agents share a PostgreSQL-backed event table (`agent_events`). Events are wr
 | `/careers` | Careers | Open positions listing |
 | `/partners` | Partner Ecosystem | All 17 partner profiles in a searchable, filterable catalog — each card shows partner name, service domain, what GJH delivers with that partner, and dual CTAs: "Work with us" and "Visit Partner Portal" |
 | `/partners/[slug]` | Partner Detail | Dedicated page per partner — full service description, GJH value-add, past engagement examples, relevant case studies, "Request a Solution" form, and direct partner portal link |
-| `/privacy` | Privacy Policy | Contact: `info@gjh-inc.com` |
-| `/terms` | Terms of Service | Contact: `info@gjh-inc.com` (NOT gjhconsulting.net — this is a critical fix) |
+| `/privacy` | Privacy Policy | Contact: `consult@gjh-inc.com` |
+| `/terms` | Terms of Service | Contact: `consult@gjh-inc.com` (NOT gjhconsulting.net — this is a critical fix) |
 
 ### Protected Routes
 
@@ -485,7 +485,7 @@ STRIPE_SECRET_KEY=               # Stripe live/test secret key
 STRIPE_PUBLISHABLE_KEY=          # Stripe publishable key
 STRIPE_WEBHOOK_SECRET=           # Stripe webhook signing secret
 RESEND_API_KEY=                  # Resend email API key
-ADMIN_EMAIL=info@gjh-inc.com     # Admin notification destination
+ADMIN_EMAIL=consult@gjh-inc.com     # Admin notification destination
 SITE_URL=https://gjh-inc.com     # Canonical base URL
 DATABASE_URL=                    # PostgreSQL connection string
 NEXTAUTH_SECRET=                 # Next.js auth secret

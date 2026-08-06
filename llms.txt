@@ -14,4 +14,4 @@ How we work:
 - Senior people do the work. You will not be handed to a team you have not met.
 - You own everything we build: the code, the infrastructure, the documentation. No dependency on us by design.
 
-Contact: [info@gjh-inc.com](mailto:info@gjh-inc.com) · [LinkedIn](https://www.linkedin.com/company/gjhinc)
+Contact: [consult@gjh-inc.com](mailto:consult@gjh-inc.com) · [LinkedIn](https://www.linkedin.com/company/gjhinc)
