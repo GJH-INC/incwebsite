@@ -27,7 +27,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 LOOP = ROOT / "loop"
 sys.path.insert(0, str(LOOP))
 
-from audit import RUBRIC_WEIGHTS, call_model  # noqa: E402
+from audit import RUBRIC_WEIGHTS  # noqa: E402
+from llm import call_model  # noqa: E402
 MIN_RUNS = 3          # don't propose harness changes off a single bad day
 RECURRENCE = 3        # a criterion must fail in this many runs to count as systemic
 
@@ -132,7 +133,7 @@ def main() -> int:
         f"CURRENT RUBRIC\n{(LOOP / 'rubric.md').read_text()}\n\n"
         f"TREND DATA ACROSS {t['runs_analyzed']} RUNS\n{json.dumps(t, indent=2)}"
     )
-    raw = call_model(cfg["models"]["improver"], IMPROVER_SYSTEM, prompt, max_tokens=6000)
+    raw = call_model("improver", IMPROVER_SYSTEM, prompt, cfg, max_tokens=6000)
     try:
         proposal = json.loads(raw.strip().strip("`"))
     except json.JSONDecodeError as exc:

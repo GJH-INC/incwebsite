@@ -17,7 +17,6 @@ import json
 import os
 import pathlib
 import re
-import subprocess
 import sys
 import time
 
@@ -26,6 +25,9 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LOOP = ROOT / "loop"
+sys.path.insert(0, str(LOOP))
+
+from llm import call_model, ModelError  # noqa: E402
 
 
 RUBRIC_WEIGHTS = {
@@ -132,54 +134,6 @@ Schema:
  "summary": str}"""
 
 
-def _extract_opencode_text(raw: str) -> str:
-    """Pull every assistant text block out of `opencode run --format json` output."""
-    parts = []
-    for line in raw.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            ev = json.loads(line)
-        except json.JSONDecodeError:
-            continue  # stray non-JSON log line — skip
-        if ev.get("type") == "text":
-            parts.append(ev.get("part", {}).get("text", ""))
-    return "\n".join(parts).strip()
-
-
-def call_model(model: str, system: str, prompt: str, max_tokens: int = 4000) -> str:
-    """Drive the loop's model work through the headless opencode CLI.
-
-    Replaces the Anthropic HTTP call with `opencode run` so the harness runs the
-    same coding agent that works on the repo, pointed at a configured model
-    (e.g. a free DeepSeek one) with no API key required.
-    """
-    cmd = [
-        "opencode", "run",
-        "-m", model,
-        "--format", "json",
-        "--pure",                # no external plugins in CI
-        "--auto",                # don't block on permission prompts, headless
-        f"{system}\n\n{prompt}",
-    ]
-    try:
-        proc = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=600,
-            env={**os.environ,
-                 "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
-                 "CI": "1"},
-        )
-    except FileNotFoundError:
-        raise RuntimeError("opencode CLI is not installed (needs `npm i -g opencode-ai` or the install script)")
-    if proc.returncode != 0:
-        raise RuntimeError(f"opencode run failed ({proc.returncode}): {proc.stderr[-400:]}")
-    return _extract_opencode_text(proc.stdout)
-
-
 def parse_grade(raw: str) -> dict:
     raw = re.sub(r"^```(?:json)?|```$", "", raw.strip(), flags=re.MULTILINE).strip()
     obj = json.loads(raw)
@@ -195,7 +149,7 @@ def parse_grade(raw: str) -> dict:
     return obj
 
 
-def grade(page_text: str, target: dict, rubric: str, cfg: dict, static: dict) -> dict:
+def grade(page_text: str, target: dict, rubric: str, cfg: dict, static: dict, market: str = "") -> dict:
     """The verification loop: grade, validate, retry with the error fed back."""
     prompt = (
         f"RUBRIC\n{rubric}\n\n"
@@ -203,6 +157,8 @@ def grade(page_text: str, target: dict, rubric: str, cfg: dict, static: dict) ->
         f"DETERMINISTIC PRE-GRADER FINDINGS\n{json.dumps(static['fails'], indent=2)}\n\n"
         f"RENDERED PAGE TEXT (url: {target['url']})\n{page_text[:60000]}"
     )
+    if market:
+        prompt += f"\n\nMARKET CONTEXT (latest research report)\n{market}"
     last_err = None
     for attempt in range(1, cfg["thresholds"]["max_grader_retries"] + 1):
         try:
@@ -210,8 +166,8 @@ def grade(page_text: str, target: dict, rubric: str, cfg: dict, static: dict) ->
                 f"{prompt}\n\nYour previous response was rejected: {last_err}\n"
                 "Return only the corrected JSON object."
             )
-            return parse_grade(call_model(cfg["models"]["grader"], GRADER_SYSTEM, ask))
-        except (json.JSONDecodeError, ValueError) as exc:
+            return parse_grade(call_model("grader", GRADER_SYSTEM, ask, cfg))
+        except (json.JSONDecodeError, ValueError, ModelError) as exc:
             last_err = str(exc)
             print(f"  grader attempt {attempt} rejected: {last_err}", file=sys.stderr)
             time.sleep(2 * attempt)
@@ -240,15 +196,30 @@ def weighted(scores: dict) -> float:
 # --------------------------------------------------------------------------
 # Orchestration
 # --------------------------------------------------------------------------
+def latest_market_report() -> str:
+    """Return the most recent market-alignment report body, or ''."""
+    reports = sorted(
+        ROOT.glob("reports/*-market-alignment.md"),
+        key=lambda p: p.name,
+        reverse=True,
+    )
+    if not reports:
+        return ""
+    return reports[0].read_text(encoding="utf-8")[:12000]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="fixtures + stub grader, no network or tokens")
     ap.add_argument("--config", default=str(LOOP / "config.yaml"))
+    ap.add_argument("--with-market", action="store_true",
+                    help="feed the latest loop/research.py report into the grader context")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(pathlib.Path(args.config).read_text())
     rubric = (LOOP / "rubric.md").read_text()
     run_id = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    market = latest_market_report() if args.with_market else ""
     results = []
 
     for target in cfg["targets"]:
@@ -264,7 +235,7 @@ def main() -> int:
         print(f"  static: {'pass' if static['passed'] else 'FAIL — ' + '; '.join(static['fails'])}")
 
         text = rendered_text(html)
-        model_grade = stub_grade(static, target) if args.dry_run else grade(text, target, rubric, cfg, static)
+        model_grade = stub_grade(static, target) if args.dry_run else grade(text, target, rubric, cfg, static, market)
         overall = weighted(model_grade["scores"])
         print(f"  overall: {overall}")
 

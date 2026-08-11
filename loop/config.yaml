@@ -15,6 +15,18 @@ competitors:
 models:
   grader: opencode/deepseek-v4-flash-free   # loop 2 — runs every cycle, high volume, free
   improver: opencode/deepseek-v4-flash-free # loop 4 — runs on trend, low volume
+  researcher: opencode/deepseek-v4-flash-free # loop 5 — research agent, low volume
+
+# Optional litellm-backed fallbacks, tried after the CLI route when their API
+# key env var is present. Config-only — no litellm server to run.
+litellm_fallbacks:
+  # - openai/gpt-4o-mini              # needs OPENAI_API_KEY
+  # - anthropic/claude-3-5-haiku-latest # needs ANTHROPIC_API_KEY
+
+# Loop 5 — market research agent config
+research:
+  min_competitor_text: 100     # ignore a competitor page with less text than this
+  top_gaps: 8                  # how many gaps the report surfaces per page
 
 thresholds:
   # Below this overall score the workflow opens a P1 issue instead of a routine PR.
